@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://https://github.com/jianwei-feng</id>
     <title>Gridea</title>
-    <updated>2020-02-22T23:02:51.246Z</updated>
+    <updated>2020-02-22T23:23:32.207Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://https://github.com/jianwei-feng"/>
     <link rel="self" href="https://https://github.com/jianwei-feng/atom.xml"/>
@@ -11,35 +11,48 @@
     <icon>https://https://github.com/jianwei-feng/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://https://github.com/jianwei-feng/post/hello-gridea/</id>
-        <link href="https://https://github.com/jianwei-feng/post/hello-gridea/">
+        <title type="html"><![CDATA[.git 目录介绍]]></title>
+        <id>https://https://github.com/jianwei-feng/post/git-mu-lu-jie-shao/</id>
+        <link href="https://https://github.com/jianwei-feng/post/git-mu-lu-jie-shao/">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2020-02-22T23:21:50.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1config文件">1.config文件</h1>
+<pre><code>保存的是当前工程的一些配置信息，包括远程仓库地址、本地分支和关联的远程分支信息、当前工程的用户名和密码
+</code></pre>
+<h1 id="2head文件">2.Head文件</h1>
+<pre><code>保存的是工程当前所在的分支
+</code></pre>
+<h1 id="3index文件-二进制文件">3.Index文件 (二进制文件)</h1>
+<pre><code>就是我们平时说的 暂存区 ，保存了下次将提交的文件列表信息，我们执行git add后这里就会更新刚刚添加的文件信息
+此文件直接打开，无法查看内容， 可以通过命令（git ls-files --stage）查看内容
+</code></pre>
+<h1 id="4info目录">4.info目录</h1>
+<pre><code>里面一般会有2个文件，exclude一般用不到，另一个文件是refs文件，里面保存的是所有分支所指向的提交(commit)列表
+</code></pre>
+<h1 id="5hooks">5.Hooks</h1>
+<pre><code>里面是钩子脚本
+</code></pre>
+<h1 id="6objects">6.Objects</h1>
+<pre><code>保存的是工程的所有元数据，包括文件的每个版本数据，每一次提交的信息等等
+分为2部分：info目录和pack目录
+                  pack目录 就是存储的元数据内容
+</code></pre>
+<h1 id="7refs目录">7.refs目录</h1>
+<pre><code>保存的是分支信息和标签Tag信息，又分为3个子目录
+remotes目录：是远程仓库的分支信息，一般只有一个远程仓库的话，下面就只有一个子目录，也就是origin，里面就是远程的分支在本地的记录
+</code></pre>
+<h2 id="71-heads目录文件名就是本地的分支名文件中存储分支当前指向的commitid">7.1 heads目录：文件名就是本地的分支名，文件中存储分支当前指向的commitID，</h2>
+<pre><code>                        和log/refs/heads/文件 名字是一样的，只是存储的内容不一样。 这里只是一个ref索引，log/refs/heads/文件存的是真实的内容
+</code></pre>
+<h2 id="72-tag目录-是标签信息">7.2 Tag目录：  是标签信息</h2>
+<h1 id="8log目录">8.Log目录</h1>
+<h2 id="81-head文件-是所有的操作记录命令git-reflog查询的结果就是从这个文件来的">8.1 HEAD文件：  是所有的操作记录，命令git reflog查询的结果就是从这个文件来的</h2>
+<h2 id="82-refs-目录有两个目录heads-和remotes">8.2 refs 目录：有两个目录heads 和remotes</h2>
+<pre><code>         Heads目录：存储的是本地分支的对象，文件名就是本地分支名， git branch命令 就是查看的这个文件
+                                          文件中存储的是对应分支下的操作记录 （commit后这里就有记录）
+         remotes目录：存储的是remote分支的对象，文件名就远程分支名， git branch -r命令 就是查看的这个文件
+                                            文件中存储的是对应分支下的操作记录
+</code></pre>
 ]]></content>
     </entry>
 </feed>

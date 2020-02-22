@@ -1,0 +1,219 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>.git 目录介绍 | Gridea</title>
+<link rel="shortcut icon" href="https://https://github.com/jianwei-feng/favicon.ico?v=1582413796926">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://https://github.com/jianwei-feng/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title=".git 目录介绍 | Gridea - Atom Feed" href="https://https://github.com/jianwei-feng/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1.config文件
+保存的是当前工程的一些配置信息，包括远程仓库地址、本地分支和关联的远程分支信息、当前工程的用户名和密码
+
+2.Head文件
+保存的是工程当前所在的分支
+
+3.Index文件 (二进制文件)
+就是我们平时说的 暂存区 ，..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://https://github.com/jianwei-feng">
+  <img class="avatar" src="https://https://github.com/jianwei-feng/images/avatar.png?v=1582413796926" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              .git 目录介绍
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-02-23
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="1config文件">1.config文件</h1>
+<pre><code>保存的是当前工程的一些配置信息，包括远程仓库地址、本地分支和关联的远程分支信息、当前工程的用户名和密码
+</code></pre>
+<h1 id="2head文件">2.Head文件</h1>
+<pre><code>保存的是工程当前所在的分支
+</code></pre>
+<h1 id="3index文件-二进制文件">3.Index文件 (二进制文件)</h1>
+<pre><code>就是我们平时说的 暂存区 ，保存了下次将提交的文件列表信息，我们执行git add后这里就会更新刚刚添加的文件信息
+此文件直接打开，无法查看内容， 可以通过命令（git ls-files --stage）查看内容
+</code></pre>
+<h1 id="4info目录">4.info目录</h1>
+<pre><code>里面一般会有2个文件，exclude一般用不到，另一个文件是refs文件，里面保存的是所有分支所指向的提交(commit)列表
+</code></pre>
+<h1 id="5hooks">5.Hooks</h1>
+<pre><code>里面是钩子脚本
+</code></pre>
+<h1 id="6objects">6.Objects</h1>
+<pre><code>保存的是工程的所有元数据，包括文件的每个版本数据，每一次提交的信息等等
+分为2部分：info目录和pack目录
+                  pack目录 就是存储的元数据内容
+</code></pre>
+<h1 id="7refs目录">7.refs目录</h1>
+<pre><code>保存的是分支信息和标签Tag信息，又分为3个子目录
+remotes目录：是远程仓库的分支信息，一般只有一个远程仓库的话，下面就只有一个子目录，也就是origin，里面就是远程的分支在本地的记录
+</code></pre>
+<h2 id="71-heads目录文件名就是本地的分支名文件中存储分支当前指向的commitid">7.1 heads目录：文件名就是本地的分支名，文件中存储分支当前指向的commitID，</h2>
+<pre><code>                        和log/refs/heads/文件 名字是一样的，只是存储的内容不一样。 这里只是一个ref索引，log/refs/heads/文件存的是真实的内容
+</code></pre>
+<h2 id="72-tag目录-是标签信息">7.2 Tag目录：  是标签信息</h2>
+<h1 id="8log目录">8.Log目录</h1>
+<h2 id="81-head文件-是所有的操作记录命令git-reflog查询的结果就是从这个文件来的">8.1 HEAD文件：  是所有的操作记录，命令git reflog查询的结果就是从这个文件来的</h2>
+<h2 id="82-refs-目录有两个目录heads-和remotes">8.2 refs 目录：有两个目录heads 和remotes</h2>
+<pre><code>         Heads目录：存储的是本地分支的对象，文件名就是本地分支名， git branch命令 就是查看的这个文件
+                                          文件中存储的是对应分支下的操作记录 （commit后这里就有记录）
+         remotes目录：存储的是remote分支的对象，文件名就远程分支名， git branch -r命令 就是查看的这个文件
+                                            文件中存储的是对应分支下的操作记录
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#1config%E6%96%87%E4%BB%B6">1.config文件</a></li>
+<li><a href="#2head%E6%96%87%E4%BB%B6">2.Head文件</a></li>
+<li><a href="#3index%E6%96%87%E4%BB%B6-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6">3.Index文件 (二进制文件)</a></li>
+<li><a href="#4info%E7%9B%AE%E5%BD%95">4.info目录</a></li>
+<li><a href="#5hooks">5.Hooks</a></li>
+<li><a href="#6objects">6.Objects</a></li>
+<li><a href="#7refs%E7%9B%AE%E5%BD%95">7.refs目录</a>
+<ul>
+<li><a href="#71-heads%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6%E5%90%8D%E5%B0%B1%E6%98%AF%E6%9C%AC%E5%9C%B0%E7%9A%84%E5%88%86%E6%94%AF%E5%90%8D%E6%96%87%E4%BB%B6%E4%B8%AD%E5%AD%98%E5%82%A8%E5%88%86%E6%94%AF%E5%BD%93%E5%89%8D%E6%8C%87%E5%90%91%E7%9A%84commitid">7.1 heads目录：文件名就是本地的分支名，文件中存储分支当前指向的commitID，</a></li>
+<li><a href="#72-tag%E7%9B%AE%E5%BD%95-%E6%98%AF%E6%A0%87%E7%AD%BE%E4%BF%A1%E6%81%AF">7.2 Tag目录：  是标签信息</a></li>
+</ul>
+</li>
+<li><a href="#8log%E7%9B%AE%E5%BD%95">8.Log目录</a>
+<ul>
+<li><a href="#81-head%E6%96%87%E4%BB%B6-%E6%98%AF%E6%89%80%E6%9C%89%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95%E5%91%BD%E4%BB%A4git-reflog%E6%9F%A5%E8%AF%A2%E7%9A%84%E7%BB%93%E6%9E%9C%E5%B0%B1%E6%98%AF%E4%BB%8E%E8%BF%99%E4%B8%AA%E6%96%87%E4%BB%B6%E6%9D%A5%E7%9A%84">8.1 HEAD文件：  是所有的操作记录，命令git reflog查询的结果就是从这个文件来的</a></li>
+<li><a href="#82-refs-%E7%9B%AE%E5%BD%95%E6%9C%89%E4%B8%A4%E4%B8%AA%E7%9B%AE%E5%BD%95heads-%E5%92%8Cremotes">8.2 refs 目录：有两个目录heads 和remotes</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://https://github.com/jianwei-feng/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
