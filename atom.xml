@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://https://github.com/jianwei-feng</id>
-    <title>Gridea</title>
-    <updated>2020-02-22T23:26:38.805Z</updated>
+    <title>Jianwei Blog</title>
+    <updated>2020-02-22T23:43:07.128Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://https://github.com/jianwei-feng"/>
     <link rel="self" href="https://https://github.com/jianwei-feng/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>日常积累</subtitle>
     <logo>https://https://github.com/jianwei-feng/images/avatar.png</logo>
     <icon>https://https://github.com/jianwei-feng/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, Jianwei Blog</rights>
     <entry>
         <title type="html"><![CDATA[.git 目录介绍]]></title>
         <id>https://https://github.com/jianwei-feng/post/git-mu-lu-jie-shao/</id>
