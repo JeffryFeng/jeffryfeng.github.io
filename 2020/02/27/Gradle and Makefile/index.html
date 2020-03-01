@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
 <meta property="article:published_time" content="2020-02-27T02:38:42.000Z">
-<meta property="article:modified_time" content="2020-03-01T05:44:16.577Z">
+<meta property="article:modified_time" content="2020-03-01T08:46:33.920Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="Gradle">
 <meta property="article:tag" content="MakeFile">
@@ -193,7 +193,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包<br>由于该模块还要integrate到老产品一起install/deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
-<h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1><h2 id="到gradle官方网站search这个plugin：https-plugins-gradle-org"><a href="#到gradle官方网站search这个plugin：https-plugins-gradle-org" class="headerlink" title="到gradle官方网站search这个plugin：https://plugins.gradle.org/"></a>到gradle官方网站search这个plugin：<a href="https://plugins.gradle.org/" target="_blank" rel="noopener">https://plugins.gradle.org/</a></h2><p>plugins {<br>  id “nebula.com.netflix.ospackage.docker” version “2.2.2”<br>}</p>
+<h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1><a id="more"></a>
+<h2 id="到gradle官方网站search这个plugin：https-plugins-gradle-org"><a href="#到gradle官方网站search这个plugin：https-plugins-gradle-org" class="headerlink" title="到gradle官方网站search这个plugin：https://plugins.gradle.org/"></a>到gradle官方网站search这个plugin：<a href="https://plugins.gradle.org/" target="_blank" rel="noopener">https://plugins.gradle.org/</a></h2><p>plugins {<br>  id “nebula.com.netflix.ospackage.docker” version “2.2.2”<br>}</p>
 <h2 id="在build-gradle添加配置"><a href="#在build-gradle添加配置" class="headerlink" title="在build.gradle添加配置"></a>在build.gradle添加配置</h2><p>github上有个sample: <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example" target="_blank" rel="noopener">https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example</a><br>并且对配置参数的解释 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def RPM_working_Directory &#x3D; &quot;&#x2F;home&#x2F;...user&#x2F;CE&quot;</span><br><span class="line">ospackage &#123;</span><br><span class="line">    summary &#39;this part is for building a rpm package using nebula&#39;</span><br><span class="line">    packageName &#39;configEditor&#39;</span><br><span class="line">&#x2F;&#x2F;   version &#39;0.0.1&#39;</span><br><span class="line">    version &quot;$&#123;project.version&#125;&quot;      &#x2F;&#x2F; use above defined version &#x3D; &#39;0.0.1-SNAPSHOT&#39;</span><br><span class="line">    arch &#39;X86_64&#39;</span><br><span class="line">    os &#39;LINUX&#39;</span><br><span class="line">    type &#39;BINARY&#39;</span><br><span class="line"></span><br><span class="line">    preInstall file(&#39;rpm_package&#x2F;preInstall.sh&#39;)</span><br><span class="line">    postInstall file(&quot;rpm_package&#x2F;postInstall.sh&quot;)</span><br><span class="line">    preUninstall file(&quot;rpm_package&#x2F;preUninstall.sh&quot;)</span><br><span class="line">    postUninstall file(&quot;rpm_package&#x2F;postUninstall.sh&quot;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set working directory and permission</span><br><span class="line">    &#x2F;&#x2F; directory(&#39;$RPM_working_Directory&#39;)</span><br><span class="line">    into &quot;$RPM_working_Directory&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set permission</span><br><span class="line">    user &quot;root&quot;</span><br><span class="line">    permissionGroup &quot;root&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy jar file to working directory:</span><br><span class="line">    from(jar.outputs.files)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy script to working directory</span><br><span class="line">    from(&#39;rpm_package&#39;) &#123;</span><br><span class="line">         into &quot;$RPM_working_Directory&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    from(&#39;build&#x2F;resources&#x2F;main&#x2F;db&#39;) &#123;</span><br><span class="line">        into &quot;$RPM_working_Directory&#x2F;db&#x2F;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb"><a href="#IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb" class="headerlink" title="IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb"></a>IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb</h2><p><img src="/img/Gradle/gradle-ospackage-plugin.jpg" alt="avatar"><br>执行gradle命令编译相关的rpm或者Deb package<br>gradle build buildRpm<br>the rpm package 会在 build/distributions/这个目录</p>
@@ -406,6 +407,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Scrum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
@@ -470,23 +475,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GITHub</a>
+              <a href="https://github.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GITHub</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Docker</a>
+              <a href="https://git-scm.com/book/zh/v2" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Git</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IntelliJ</a>
+              <a href="https://hub.docker.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Docker</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Gradle</a>
+              <a href="https://plugins.jetbrains.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IntelliJ</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Cucumber</a>
+              <a href="https://plugins.gradle.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Gradle</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://cucumber.io/docs/cucumber/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Cucumber</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.selenium.dev/documentation/zh-cn/webdriver/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Selenium</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://github.com/SeleniumHQ/docker-selenium" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Selenium Hub</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://rest-assured.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>RestAssured</a>
             </li>
           
         </ul>

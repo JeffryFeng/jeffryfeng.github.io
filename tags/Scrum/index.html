@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>Jeffry Feng Blog</title>
+  <title>Tag: Scrum | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jeffry Feng Blog">
-<meta property="og:url" content="https://jeffryfeng.github.io/page/2/index.html">
+<meta property="og:url" content="https://jeffryfeng.github.io/tags/Scrum/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
 <meta property="og:description" content="description">
 <meta property="og:locale" content="en_US">
@@ -168,98 +168,58 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Gradle and Makefile" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/27/Scrum/" class="archive-article-date">
+  	<time datetime="2020-02-27T11:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/27/Gradle%20and%20Makefile/">Gradle and Makefile</a>
+      <a class="archive-article-title" href="/2020/02/27/Scrum/">Scrum</a>
     </h1>
   
 
-        
-        <a href="/2020/02/27/Gradle%20and%20Makefile/" class="archive-article-date">
-  	<time datetime="2020-02-27T02:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包<br>由于该模块还要integrate到老产品一起install/deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
-<h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1><h2 id="到gradle官方网站search这个plugin：https-plugins-gradle-org"><a href="#到gradle官方网站search这个plugin：https-plugins-gradle-org" class="headerlink" title="到gradle官方网站search这个plugin：https://plugins.gradle.org/"></a>到gradle官方网站search这个plugin：<a href="https://plugins.gradle.org/" target="_blank" rel="noopener">https://plugins.gradle.org/</a></h2><p>plugins {<br>  id “nebula.com.netflix.ospackage.docker” version “2.2.2”<br>}</p>
-<h2 id="在build-gradle添加配置"><a href="#在build-gradle添加配置" class="headerlink" title="在build.gradle添加配置"></a>在build.gradle添加配置</h2><p>github上有个sample: <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example" target="_blank" rel="noopener">https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example</a><br>并且对配置参数的解释 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def RPM_working_Directory &#x3D; &quot;&#x2F;home&#x2F;...user&#x2F;CE&quot;</span><br><span class="line">ospackage &#123;</span><br><span class="line">    summary &#39;this part is for building a rpm package using nebula&#39;</span><br><span class="line">    packageName &#39;configEditor&#39;</span><br><span class="line">&#x2F;&#x2F;   version &#39;0.0.1&#39;</span><br><span class="line">    version &quot;$&#123;project.version&#125;&quot;      &#x2F;&#x2F; use above defined version &#x3D; &#39;0.0.1-SNAPSHOT&#39;</span><br><span class="line">    arch &#39;X86_64&#39;</span><br><span class="line">    os &#39;LINUX&#39;</span><br><span class="line">    type &#39;BINARY&#39;</span><br><span class="line"></span><br><span class="line">    preInstall file(&#39;rpm_package&#x2F;preInstall.sh&#39;)</span><br><span class="line">    postInstall file(&quot;rpm_package&#x2F;postInstall.sh&quot;)</span><br><span class="line">    preUninstall file(&quot;rpm_package&#x2F;preUninstall.sh&quot;)</span><br><span class="line">    postUninstall file(&quot;rpm_package&#x2F;postUninstall.sh&quot;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set working directory and permission</span><br><span class="line">    &#x2F;&#x2F; directory(&#39;$RPM_working_Directory&#39;)</span><br><span class="line">    into &quot;$RPM_working_Directory&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set permission</span><br><span class="line">    user &quot;root&quot;</span><br><span class="line">    permissionGroup &quot;root&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy jar file to working directory:</span><br><span class="line">    from(jar.outputs.files)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy script to working directory</span><br><span class="line">    from(&#39;rpm_package&#39;) &#123;</span><br><span class="line">         into &quot;$RPM_working_Directory&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    from(&#39;build&#x2F;resources&#x2F;main&#x2F;db&#39;) &#123;</span><br><span class="line">        into &quot;$RPM_working_Directory&#x2F;db&#x2F;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb"><a href="#IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb" class="headerlink" title="IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb"></a>IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb</h2><p><img src="/img/Gradle/gradle-ospackage-plugin.jpg" alt="avatar"><br>执行gradle命令编译相关的rpm或者Deb package<br>gradle build buildRpm<br>the rpm package 会在 build/distributions/这个目录</p>
-<h1 id="老的项目是通过git-submodule引入新模块"><a href="#老的项目是通过git-submodule引入新模块" class="headerlink" title="老的项目是通过git submodule引入新模块"></a>老的项目是通过git submodule引入新模块</h1><p> 新的blog link</p>
-<h1 id="修改老项目的Makefile"><a href="#修改老项目的Makefile" class="headerlink" title="修改老项目的Makefile"></a>修改老项目的Makefile</h1><p>老产品有个总入口Makefile，add code to invoke this makefile</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">all:build_config_editor_backend</span><br><span class="line">	echo &quot;..........copy buildout config_editor RPM package to outwebcfg&#x2F;pkg&#x2F;..........&quot;</span><br><span class="line">	cp $(OUT_CONFIG_EDITOR_RPM_PKG_DIR)&#x2F;configEditor-*.rpm $(CONFIG_EDITOR_RPM_PKG_W_VERSION)</span><br><span class="line"></span><br><span class="line">build_config_editor_backend</span><br><span class="line">	echo &quot;..........start to build config_editor_backend..........&quot;</span><br><span class="line">	cd backend &amp;&amp; cp -r ..&#x2F;ojet_gui&#x2F;web .&#x2F;src&#x2F;main&#x2F;resources&#x2F;static&#x2F; &amp;&amp; gradle clean build buildRpm -x test</span><br></pre></td></tr></table></figure>
-
-<h1 id="修改T2监控新模块的service-running-restart"><a href="#修改T2监控新模块的service-running-restart" class="headerlink" title="修改T2监控新模块的service running/restart"></a>修改T2监控新模块的service running/restart</h1><p>T2部分的code，包括<br>                 service在server reboot/restart后通过rpm install启动service，<br>                 service 的监控，<br>                 service的log记录等</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/27/Gradle%20and%20Makefile/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+    </div></section>
   
+
+    
 
 
           </div>
@@ -284,7 +244,7 @@
 		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -352,6 +312,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Scrum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
@@ -416,23 +380,39 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GITHub</a>
+              <a href="https://github.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GITHub</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Docker</a>
+              <a href="https://git-scm.com/book/zh/v2" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Git</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IntelliJ</a>
+              <a href="https://hub.docker.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Docker</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Gradle</a>
+              <a href="https://plugins.jetbrains.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>IntelliJ</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Cucumber</a>
+              <a href="https://plugins.gradle.org/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Gradle</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://cucumber.io/docs/cucumber/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Cucumber</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://www.selenium.dev/documentation/zh-cn/webdriver/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Selenium</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://github.com/SeleniumHQ/docker-selenium" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Selenium Hub</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://rest-assured.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>RestAssured</a>
             </li>
           
         </ul>
