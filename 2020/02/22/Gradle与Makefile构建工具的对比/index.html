@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>Git Submodule的使用 | Jeffry Feng Blog</title>
+  <title>Gradle与Makefile构建工具的对比 | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="添加submodule 命令git submodule add -b BranchName  ssh:&#x2F;&#x2F;git@*.git   src&#x2F;fjw   &amp;nbsp; &amp;nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch   &amp;nbsp; &amp;nbsp; src&#x2F;fjw 在哪个目录下建立submodule， 不指定就">
+  <meta name="description" content="都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能   Makefile是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译 123456.PHONY: cleanall: hellohello: hello.c    gcc -o hello">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Submodule的使用">
-<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/27/git%20submodule/index.html">
+<meta property="og:title" content="Gradle与Makefile构建工具的对比">
+<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="添加submodule 命令git submodule add -b BranchName  ssh:&#x2F;&#x2F;git@*.git   src&#x2F;fjw   &amp;nbsp; &amp;nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch   &amp;nbsp; &amp;nbsp; src&#x2F;fjw 在哪个目录下建立submodule， 不指定就">
+<meta property="og:description" content="都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能   Makefile是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译 123456.PHONY: cleanall: hellohello: hello.c    gcc -o hello">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-27T11:22:49.000Z">
-<meta property="article:modified_time" content="2020-03-01T08:45:57.587Z">
+<meta property="og:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
+<meta property="article:published_time" content="2020-02-22T11:22:39.000Z">
+<meta property="article:modified_time" content="2020-03-04T12:32:22.870Z">
 <meta property="article:author" content="Jeffry Feng">
-<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Gradle">
+<meta property="article:tag" content="MakeFile">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jeffry Feng Blog" type="application/atom+xml">
   
@@ -62,11 +65,12 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/Books/">读书</a></li>
-	        
-				<li><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+				<li><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 	        
 			</ul>
+		</nav>
+		<nav>
+		   total 8
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -88,17 +92,21 @@
 				
 					<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 		        
 					<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 		        
 			</div>
+
+			<!-- 网易云音乐插件 -->
+      
+
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -126,8 +134,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -135,11 +141,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 			        
 						<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 			        
@@ -147,14 +153,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/Books/">读书</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+					<li style="width: 50%"><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 		        
 				</ul>
 			</nav>
@@ -169,30 +173,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git submodule" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Gradle与Makefile构建工具的对比" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Git Submodule的使用
+      Gradle与Makefile构建工具的对比
     </h1>
   
 
         
-        <a href="/2020/02/27/git%20submodule/" class="archive-article-date">
-  	<time datetime="2020-02-27T11:22:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+        <a href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" class="archive-article-date">
+  	<time datetime="2020-02-22T11:22:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="添加submodule-命令"><a href="#添加submodule-命令" class="headerlink" title="添加submodule 命令"></a>添加submodule 命令</h1><p>git submodule add -b BranchName  ssh://git@*.git   src/fjw<br>   &nbsp; &nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch<br>   &nbsp; &nbsp; src/fjw 在哪个目录下建立submodule， 不指定就是当前目录<br>命令完成后，在scr/fjw/下自动create一个目录，和根目录下create一个.gitmodule 文件<br>如果本来就有.gitmodules文件， 会在文件追加submodule</p>
-<h1 id="更新submodule的最新code"><a href="#更新submodule的最新code" class="headerlink" title="更新submodule的最新code"></a>更新submodule的最新code</h1><a id="more"></a>
-<p>1）在项目根路径下 git submodule update –init –recursive –remote<br>2）到submodle project下，<br>&nbsp; &nbsp; git checkout develop<br>&nbsp; &nbsp; git pull<br>3）把这个submodule project的code 拉下来后，一般情况下 是要和本project经过测试是OK的，然后commit上去。<br>如果只是执行 git submodule update –init –recursive –remote  这个命令 是把submodule最新的code 拉过来了，<br>虽然submodule的code是最新的，但是没有和本project配合测试， 并不能保证就是和本项目完美配合的code.<br>4）返回项目根路径下，提交新的commitID到gitlab<br>&nbsp; &nbsp;  git add src/apps/config_editor/backend<br>&nbsp; &nbsp;  git add src/apps/config_editor/ojet_gui<br>&nbsp; &nbsp;  git commit<br>&nbsp; &nbsp;  git push </p>
-<p>这样后，其他人在执行git submodule update后，从gitlab server上拉的就是 submodule的code就是 本次提交的commitID。并且这个code是经过测试时OK的<br>要不然 gitlab server 上本project一直没有udpate到最新的commitID，只有step4后才行</p>
+        <!-- toc -->
+<p>都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能  </p>
+<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成<br>makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line">all: hello</span><br><span class="line">hello: hello.c</span><br><span class="line">    gcc -o hello hello.c</span><br><span class="line">clean:</span><br><span class="line">    rm hello</span><br></pre></td></tr></table></figure>
+<p>这里有三个”目标”，分别是: “all”，”hello”，”clean”,  当执行”make”命令时，编译器会默认查找目标”all” ，如果没有”all”则会查找Makefile文件的第一个目标</p>
+<h1 id="Gradle，-最核心的构建规都则交给了Plugin来完成"><a href="#Gradle，-最核心的构建规都则交给了Plugin来完成" class="headerlink" title="Gradle， 最核心的构建规都则交给了Plugin来完成"></a>Gradle， 最核心的构建规都则交给了Plugin来完成</h1><a id="more"></a>
+<h2 id="识别源文件"><a href="#识别源文件" class="headerlink" title="识别源文件"></a>识别源文件</h2><p>Gradle的思想”约定优于配置”，它通过”Plugin”来约定项目的目标和源文件的布局</p>
+<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>如图 gradle有很多task，执行task的过程 就是编译， task类似makefile中的target<br>task是有相互依赖的，例如执行build 就依赖assemble和Test</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">:compileJava</span><br><span class="line">:processResources</span><br><span class="line">:classes</span><br><span class="line">:jar</span><br><span class="line">:assemble</span><br><span class="line">:compileTestJava</span><br><span class="line">:processTestResources</span><br><span class="line">:testClasses</span><br><span class="line">:test</span><br><span class="line">:check</span><br><span class="line">:build</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Gradle/gradle-ospackage-plugin.jpg" alt="avatar"></p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$gradle build        &#x2F;&#x2F;构建和打包整个项目</span><br><span class="line">$gradle clean        &#x2F;&#x2F;清除之前的构建</span><br><span class="line">$gradle test         &#x2F;&#x2F;执行测试</span><br><span class="line">$gradle compileJava  &#x2F;&#x2F;编译java</span><br><span class="line">$gradle clean build -x test &#x2F;&#x2F;clean后构建，并不执行test</span><br></pre></td></tr></table></figure>
+<p>make命令:默认查找当前目录下的Makefile文件，构建命令参数中所指定的”目标”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$make all</span><br><span class="line">$make clean</span><br><span class="line">$make 指定makefile的一个target</span><br></pre></td></tr></table></figure>
+<h2 id="引入第三方库"><a href="#引入第三方库" class="headerlink" title="引入第三方库"></a>引入第三方库</h2><p>gradle是通过build.grade文件中的dependencies来配置的<br>make将第三方库的源码下载下来，编译为库后放入到工程目录下，然后修改Makefile文件，在gcc/g++的编译链接参数中引用该第三方库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello: hello.c</span><br><span class="line">    gcc -o hello hello.c -L&#x2F;libs&#x2F;foo.a</span><br></pre></td></tr></table></figure>
+<p>NOTE1: 第三方库与我们自己的代码放到不同目录中，静态库放到lib文件夹，将动态库放到bin文件夹<br>NOTE2: makefile中添加 库文件依赖， -L 后面跟库文件的路径，  -l(小写)后面跟库的名字</p>
 
       
 
@@ -206,7 +222,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
         		</li>
       		
 		</ul>
@@ -225,18 +245,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/27/test6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          test6
+          Gradle and Makefile的项目实践
         
       </div>
     </a>
   
   
-    <a href="/2020/02/27/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Gradle与Makefile构建工具的对比</div>
+    <a href="/2020/02/21/Scrum/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Scrum</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -264,7 +284,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git submodule" data-title="Git Submodule的使用" data-url="https://jeffryfeng.github.io/2020/02/27/git%20submodule/"></div>
+	<div class="ds-thread" data-thread-key="Gradle与Makefile构建工具的对比" data-title="Gradle与Makefile构建工具的对比" data-url="https://jeffryfeng.github.io/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -411,6 +431,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VM</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,23 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>Gradle与Makefile构建工具的对比 | Jeffry Feng Blog</title>
+  <title>Scrum | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能   Makefile是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译 123456.PHONY: cleanall: hellohello: hello.c    gcc -o hello">
+  <meta name="description" content="3 rolesPO(Product Owner):Master:Scrum Team:  自组织、自管理 跨职能的团队 ，包含architect，对技术细节的把握 3 aritfactsProduct Backlog:项目的需求列表有优先级Jira里就是Epic   Sprint Backlog:Jira里就是story,Priority优先级估计时间Story要在Grooming Meeting">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle与Makefile构建工具的对比">
-<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/27/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:title" content="Scrum">
+<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/21/Scrum/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能   Makefile是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译 123456.PHONY: cleanall: hellohello: hello.c    gcc -o hello">
+<meta property="og:description" content="3 rolesPO(Product Owner):Master:Scrum Team:  自组织、自管理 跨职能的团队 ，包含architect，对技术细节的把握 3 aritfactsProduct Backlog:项目的需求列表有优先级Jira里就是Epic   Sprint Backlog:Jira里就是story,Priority优先级估计时间Story要在Grooming Meeting">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
-<meta property="article:published_time" content="2020-02-27T11:22:39.000Z">
-<meta property="article:modified_time" content="2020-03-01T13:18:08.544Z">
+<meta property="article:published_time" content="2020-02-21T11:23:57.000Z">
+<meta property="article:modified_time" content="2020-03-04T12:31:41.492Z">
 <meta property="article:author" content="Jeffry Feng">
-<meta property="article:tag" content="Gradle">
-<meta property="article:tag" content="MakeFile">
+<meta property="article:tag" content="Scrum">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jeffry Feng Blog" type="application/atom+xml">
   
@@ -65,11 +62,12 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/Books/">读书</a></li>
-	        
-				<li><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+				<li><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 	        
 			</ul>
+		</nav>
+		<nav>
+		   total 8
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -91,17 +89,21 @@
 				
 					<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 		        
 					<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 		        
 			</div>
+
+			<!-- 网易云音乐插件 -->
+      
+
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -129,8 +131,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -138,11 +138,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 			        
 						<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 			        
@@ -150,14 +150,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/Books/">读书</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+					<li style="width: 50%"><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,43 +170,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Gradle与Makefile构建工具的对比" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Scrum" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Gradle与Makefile构建工具的对比
+      Scrum
     </h1>
   
 
         
-        <a href="/2020/02/27/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" class="archive-article-date">
-  	<time datetime="2020-02-27T11:22:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+        <a href="/2020/02/21/Scrum/" class="archive-article-date">
+  	<time datetime="2020-02-21T11:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- toc -->
-<p>都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能  </p>
-<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成<br>makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line">all: hello</span><br><span class="line">hello: hello.c</span><br><span class="line">    gcc -o hello hello.c</span><br><span class="line">clean:</span><br><span class="line">    rm hello</span><br></pre></td></tr></table></figure>
-<p>这里有三个”目标”，分别是: “all”，”hello”，”clean”,  当执行”make”命令时，编译器会默认查找目标”all” ，如果没有”all”则会查找Makefile文件的第一个目标</p>
-<h1 id="Gradle，-最核心的构建规都则交给了Plugin来完成"><a href="#Gradle，-最核心的构建规都则交给了Plugin来完成" class="headerlink" title="Gradle， 最核心的构建规都则交给了Plugin来完成"></a>Gradle， 最核心的构建规都则交给了Plugin来完成</h1><a id="more"></a>
-<h2 id="识别源文件"><a href="#识别源文件" class="headerlink" title="识别源文件"></a>识别源文件</h2><p>Gradle的思想”约定优于配置”，它通过”Plugin”来约定项目的目标和源文件的布局</p>
-<h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>如图 gradle有很多task，执行task的过程 就是编译， task类似makefile中的target<br>task是有相互依赖的，例如执行build 就依赖assemble和Test</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">:compileJava</span><br><span class="line">:processResources</span><br><span class="line">:classes</span><br><span class="line">:jar</span><br><span class="line">:assemble</span><br><span class="line">:compileTestJava</span><br><span class="line">:processTestResources</span><br><span class="line">:testClasses</span><br><span class="line">:test</span><br><span class="line">:check</span><br><span class="line">:build</span><br></pre></td></tr></table></figure>
-<p><img src="/img/Gradle/gradle-ospackage-plugin.jpg" alt="avatar"></p>
-<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$gradle build        &#x2F;&#x2F;构建和打包整个项目</span><br><span class="line">$gradle clean        &#x2F;&#x2F;清除之前的构建</span><br><span class="line">$gradle test         &#x2F;&#x2F;执行测试</span><br><span class="line">$gradle compileJava  &#x2F;&#x2F;编译java</span><br><span class="line">$gradle clean build -x test &#x2F;&#x2F;clean后构建，并不执行test</span><br></pre></td></tr></table></figure>
-<p>make命令:默认查找当前目录下的Makefile文件，构建命令参数中所指定的”目标”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$make all</span><br><span class="line">$make clean</span><br><span class="line">$make 指定makefile的一个target</span><br></pre></td></tr></table></figure>
-<h2 id="引入第三方库"><a href="#引入第三方库" class="headerlink" title="引入第三方库"></a>引入第三方库</h2><p>gradle是通过build.grade文件中的dependencies来配置的<br>make将第三方库的源码下载下来，编译为库后放入到工程目录下，然后修改Makefile文件，在gcc/g++的编译链接参数中引用该第三方库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello: hello.c</span><br><span class="line">    gcc -o hello hello.c -L&#x2F;libs&#x2F;foo.a</span><br></pre></td></tr></table></figure>
-<p>NOTE1: 第三方库与我们自己的代码放到不同目录中，静态库放到lib文件夹，将动态库放到bin文件夹<br>NOTE2: makefile中添加 库文件依赖， -L 后面跟库文件的路径，  -l(小写)后面跟库的名字</p>
-
+        <h1 id="3-roles"><a href="#3-roles" class="headerlink" title="3 roles"></a>3 roles</h1><p>PO(Product Owner):<br>Master:<br>Scrum Team:  自组织、自管理 跨职能的团队 ，包含architect，对技术细节的把握</p>
+<h1 id="3-aritfacts"><a href="#3-aritfacts" class="headerlink" title="3 aritfacts"></a>3 aritfacts</h1><h2 id="Product-Backlog"><a href="#Product-Backlog" class="headerlink" title="Product Backlog:"></a>Product Backlog:</h2><p>项目的需求列表<br>有优先级<br>Jira里就是Epic  </p>
+<h2 id="Sprint-Backlog"><a href="#Sprint-Backlog" class="headerlink" title="Sprint Backlog:"></a>Sprint Backlog:</h2><p>Jira里就是story,<br>Priority优先级<br>估计时间<br>Story要在Grooming Meeting的时候review，不过PO写story要遵循DoD（Definition of Done）<br>developer拿到story 会写sub-task，一般一个subtask的耗时一天  </p>
+<h2 id="Increment"><a href="#Increment" class="headerlink" title="Increment:"></a>Increment:</h2><p>Jira里可以通过Burndown chart 查看进展情况<br>the most important Scrum artifact<br>Review meeting的汇报和demo</p>
+<a id="more"></a>
+<h1 id="5-meetings"><a href="#5-meetings" class="headerlink" title="5 meetings"></a>5 meetings</h1><h2 id="Planning-Meeting"><a href="#Planning-Meeting" class="headerlink" title="Planning Meeting:"></a>Planning Meeting:</h2><p>整个项目的roadmap，现今市场情况<br>整个项目的planning时间规划<br>需求的分析<br>讨论哪些需求先做，需求间是否有依赖性<br>每个sprint的主要工作<br>是否需要什么support</p>
+<h2 id="Grooming-Meeting"><a href="#Grooming-Meeting" class="headerlink" title="Grooming Meeting:"></a>Grooming Meeting:</h2><p>Story的review<br>story的理解和预估时间</p>
+<h2 id="Daily-Standup"><a href="#Daily-Standup" class="headerlink" title="Daily Standup:"></a>Daily Standup:</h2><p>三个问题：<br>1）本次会议之前，自己做了什么？<br>2）本次会议之后，自己打算或计划做什么？<br>3）目前，是否遇到了阻碍自己的问题？<br> 现实中差不多成为向manager汇报工作了<br> 比较强势的人容易主导会议</p>
+<h2 id="Review-Meeting"><a href="#Review-Meeting" class="headerlink" title="Review Meeting:"></a>Review Meeting:</h2><p>给stakeholder展示当前sprint的成果<br>按照道理不用大准备,但是我们给美国人demo，基本上都要准备一天<br>在confluence上写一个summary:包括story status，需要demo的东西</p>
+<h2 id="RetroSpective-Meeting"><a href="#RetroSpective-Meeting" class="headerlink" title="RetroSpective Meeting:"></a>RetroSpective Meeting:</h2><p>周期性检视团队最佳实践以及存在的问题， 经验的总结、反思，并拟定相应的改进措施<br>每个人发表两点：针对自己做的好的地方，做的不好 需要改进的地方，最好给我怎么改进 </p>
+<h1 id="5-values"><a href="#5-values" class="headerlink" title="5 values"></a>5 values</h1><p>1）Focus<br>2）courage<br>有勇气接受看似不可能的挑战，<br>又要有勇气拼尽全力去完成个人承诺要交付的成果，<br>更要有勇气对不合理的要求说“不<br>3）Openness<br>每个人都会遇到障碍，每个人都会有长于别人、弱于别人之处。<br>保持开放的心态，公开透明地展示自己的强项、弱点，明确地展示自己的工作进展、遇到的障碍等状态<br>4）Respect<br>5）Commitment  </p>
+<p> 要保持passion 积极的工作态度</p>
+<h1 id="敏捷宣言"><a href="#敏捷宣言" class="headerlink" title="敏捷宣言"></a>敏捷宣言</h1><p>个体和交互 胜过 过程和工具<br>可用的软件 胜过 完备的文档<br>客户协作 胜过 合同谈判<br>响应变化 胜过 遵循计划  </p>
+<h1 id="12个原则"><a href="#12个原则" class="headerlink" title="12个原则"></a>12个原则</h1><p>1)我们最重要的目标，是通过持续不断地及早交付有价值的软件使客户满意。<br>Scrum：产品需求列表中的优先级及每次迭代后持续提交工作软件<br>2)欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。<br>Scrum：产品需求列表可以随时更新<br>3)经常地交付可工作的软件，相隔几星期或一两个月，倾向于采取较短的周期。<br>Scrum：1-4周的的迭代周期<br>4)业务人员和开发人员必须相互合作，项目中的每一天都不例外。<br>Scrum：跨职能团队及每日15分钟的站立会议<br>5)激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。<br>Scrum：团队自我管理原则<br>6)不论团队内外，传递信息效果最好和效率最高的方式是面对面的交谈。<br>Scrum：5~9人的小团队，白板的使用以及开放环境的面对面沟通<br>7)可工作的软件是进度的首要度量标准。<br>Scrum：对工作的软件的关注，演示会要求提供可以被验收和演示的内容<br>8)敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。<br>Scrum：时间盒概念，迭代速率的使用<br>9)坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。<br>Scrum：要求对产品需求列表中每个用户故事都定义一个完成标准；<br>10)以简洁为本，它是极力减少不必要工作量的艺术。<br>Scrum：尽量制作正好够的东西已经在恰当时间做决策<br>11)最好的架构、需求和设计出自组织团队。<br>Scrum：如何做完全放在团队手中；<br>12)团队定期地反思如何能提高成效，并依此调整自身的举止表现。<br>Scrum：回顾会的作用</p>
+<h1 id="项目中使用的工具-JIRA-Confluence"><a href="#项目中使用的工具-JIRA-Confluence" class="headerlink" title="项目中使用的工具 JIRA Confluence"></a>项目中使用的工具 JIRA Confluence</h1>
       
 
       
@@ -221,11 +217,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
         		</li>
       		
 		</ul>
@@ -244,17 +236,17 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/27/git%20submodule/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Git Submodule的使用
+          Gradle与Makefile构建工具的对比
         
       </div>
     </a>
   
   
-    <a href="/2020/02/27/Testing/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/02/20/Hello%20Blog/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">First Blog in 2020</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -283,7 +275,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Gradle与Makefile构建工具的对比" data-title="Gradle与Makefile构建工具的对比" data-url="https://jeffryfeng.github.io/2020/02/27/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/"></div>
+	<div class="ds-thread" data-thread-key="Scrum" data-title="Scrum" data-url="https://jeffryfeng.github.io/2020/02/21/Scrum/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -430,6 +422,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VM</a>
               </li>
             
             <div class="clearfix"></div>

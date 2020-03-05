@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>First Blog in 2020 | Jeffry Feng Blog</title>
+  <title>Gradle and Makefile的项目实践 | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2020 新的一年，特殊的一年。大环境：整个中国在新型管状病毒的阴霾下，人人都在家不敢出门，躺在家里就是给国家做贡献了家庭：工作： 年后正月已经过去了，HR通知大家还是work at home个人：">
+  <meta name="description" content="老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包由于该模块还要integrate到老产品一起install&#x2F;deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改Make">
 <meta property="og:type" content="article">
-<meta property="og:title" content="First Blog in 2020">
-<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/27/Testing/index.html">
+<meta property="og:title" content="Gradle and Makefile的项目实践">
+<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="2020 新的一年，特殊的一年。大环境：整个中国在新型管状病毒的阴霾下，人人都在家不敢出门，躺在家里就是给国家做贡献了家庭：工作： 年后正月已经过去了，HR通知大家还是work at home个人：">
+<meta property="og:description" content="老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包由于该模块还要integrate到老产品一起install&#x2F;deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改Make">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-27T02:54:39.000Z">
-<meta property="article:modified_time" content="2020-02-29T08:44:52.934Z">
+<meta property="og:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
+<meta property="article:published_time" content="2020-02-23T02:38:42.000Z">
+<meta property="article:modified_time" content="2020-03-04T12:32:22.907Z">
 <meta property="article:author" content="Jeffry Feng">
+<meta property="article:tag" content="Gradle">
+<meta property="article:tag" content="MakeFile">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Jeffry Feng Blog" type="application/atom+xml">
   
@@ -61,11 +65,12 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/Books/">读书</a></li>
-	        
-				<li><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+				<li><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 	        
 			</ul>
+		</nav>
+		<nav>
+		   total 8
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -87,17 +92,21 @@
 				
 					<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+					<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 		        
 					<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-		        
-					<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 		        
 					<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 		        
 			</div>
+
+			<!-- 网易云音乐插件 -->
+      
+
 		</nav>
-	</header>		
+	</header>
 </div>
 
     </div>
@@ -125,8 +134,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -134,11 +141,11 @@
 					
 						<a class="github" target="_blank" href="https://github.com/jeffryfeng" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="qq" target="_blank" href="/14275072" title="qq"><i class="icon-qq"></i></a>
+						<a class="qq" target="_blank" href="mailto:14275072@qq.com" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 			        
 						<a class="mail" target="_blank" href="mailto:jeffry.feng@gmail.com" title="mail"><i class="icon-mail"></i></a>
-			        
-						<a class="google" target="_blank" href="#" title="google"><i class="icon-google"></i></a>
 			        
 						<a class="linkedin" target="_blank" href="#" title="linkedin"><i class="icon-linkedin"></i></a>
 			        
@@ -146,14 +153,12 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/Books/">读书</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/Pictures/20200222195335.jpg">摄影</a></li>
+					<li style="width: 50%"><a href="https://music.163.com/#/album?id=2493015" target="_blank" rel="noopener">Music</a></li>
 		        
 				</ul>
 			</nav>
@@ -168,27 +173,37 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Testing" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Gradle and Makefile结合实践" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      First Blog in 2020
+      Gradle and Makefile的项目实践
     </h1>
   
 
         
-        <a href="/2020/02/27/Testing/" class="archive-article-date">
-  	<time datetime="2020-02-27T02:54:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-27</time>
+        <a href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
+  	<time datetime="2020-02-23T02:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2020 新的一年，特殊的一年。<br>大环境：整个中国在新型管状病毒的阴霾下，人人都在家不敢出门，躺在家里就是给国家做贡献了<br>家庭：<br>工作： 年后正月已经过去了，HR通知大家还是work at home<br>个人： </p>
+        <p>老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包<br>由于该模块还要integrate到老产品一起install/deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
+<h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1><a id="more"></a>
+<h2 id="到gradle官方网站search这个plugin：https-plugins-gradle-org"><a href="#到gradle官方网站search这个plugin：https-plugins-gradle-org" class="headerlink" title="到gradle官方网站search这个plugin：https://plugins.gradle.org/"></a>到gradle官方网站search这个plugin：<a href="https://plugins.gradle.org/" target="_blank" rel="noopener">https://plugins.gradle.org/</a></h2><p>plugins {<br>  id “nebula.com.netflix.ospackage.docker” version “2.2.2”<br>}</p>
+<h2 id="在build-gradle添加配置"><a href="#在build-gradle添加配置" class="headerlink" title="在build.gradle添加配置"></a>在build.gradle添加配置</h2><p>github上有个sample: <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example" target="_blank" rel="noopener">https://github.com/nebula-plugins/gradle-ospackage-plugin/wiki/Usage-Example</a><br>并且对配置参数的解释 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">def RPM_working_Directory &#x3D; &quot;&#x2F;home&#x2F;...user&#x2F;CE&quot;</span><br><span class="line">ospackage &#123;</span><br><span class="line">    summary &#39;this part is for building a rpm package using nebula&#39;</span><br><span class="line">    packageName &#39;configEditor&#39;</span><br><span class="line">&#x2F;&#x2F;   version &#39;0.0.1&#39;</span><br><span class="line">    version &quot;$&#123;project.version&#125;&quot;      &#x2F;&#x2F; use above defined version &#x3D; &#39;0.0.1-SNAPSHOT&#39;</span><br><span class="line">    arch &#39;X86_64&#39;</span><br><span class="line">    os &#39;LINUX&#39;</span><br><span class="line">    type &#39;BINARY&#39;</span><br><span class="line"></span><br><span class="line">    preInstall file(&#39;rpm_package&#x2F;preInstall.sh&#39;)</span><br><span class="line">    postInstall file(&quot;rpm_package&#x2F;postInstall.sh&quot;)</span><br><span class="line">    preUninstall file(&quot;rpm_package&#x2F;preUninstall.sh&quot;)</span><br><span class="line">    postUninstall file(&quot;rpm_package&#x2F;postUninstall.sh&quot;)</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set working directory and permission</span><br><span class="line">    &#x2F;&#x2F; directory(&#39;$RPM_working_Directory&#39;)</span><br><span class="line">    into &quot;$RPM_working_Directory&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; set permission</span><br><span class="line">    user &quot;root&quot;</span><br><span class="line">    permissionGroup &quot;root&quot;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy jar file to working directory:</span><br><span class="line">    from(jar.outputs.files)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; copy script to working directory</span><br><span class="line">    from(&#39;rpm_package&#39;) &#123;</span><br><span class="line">         into &quot;$RPM_working_Directory&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    from(&#39;build&#x2F;resources&#x2F;main&#x2F;db&#39;) &#123;</span><br><span class="line">        into &quot;$RPM_working_Directory&#x2F;db&#x2F;&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb"><a href="#IntelliJ-右侧里gradle选项可以看到-buildRpm和buildDeb" class="headerlink" title="IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb"></a>IntelliJ 右侧里gradle选项可以看到 buildRpm和buildDeb</h2><p><img src="/img/Gradle/gradle-ospackage-plugin.jpg" alt="avatar"><br>执行gradle命令编译相关的rpm或者Deb package<br>gradle build buildRpm<br>the rpm package 会在 build/distributions/这个目录</p>
+<h1 id="老的项目是通过git-submodule引入新模块"><a href="#老的项目是通过git-submodule引入新模块" class="headerlink" title="老的项目是通过git submodule引入新模块"></a>老的项目是通过git submodule引入新模块</h1><p> 新的blog link</p>
+<h1 id="修改老项目的Makefile"><a href="#修改老项目的Makefile" class="headerlink" title="修改老项目的Makefile"></a>修改老项目的Makefile</h1><p>老产品有个总入口Makefile，add code to invoke this makefile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">all:build_config_editor_backend</span><br><span class="line">	echo &quot;..........copy buildout config_editor RPM package to outwebcfg&#x2F;pkg&#x2F;..........&quot;</span><br><span class="line">	cp $(OUT_CONFIG_EDITOR_RPM_PKG_DIR)&#x2F;configEditor-*.rpm $(CONFIG_EDITOR_RPM_PKG_W_VERSION)</span><br><span class="line"></span><br><span class="line">build_config_editor_backend</span><br><span class="line">	echo &quot;..........start to build config_editor_backend..........&quot;</span><br><span class="line">	cd backend &amp;&amp; cp -r ..&#x2F;ojet_gui&#x2F;web .&#x2F;src&#x2F;main&#x2F;resources&#x2F;static&#x2F; &amp;&amp; gradle clean build buildRpm -x test</span><br></pre></td></tr></table></figure>
+
+<h1 id="修改T2监控新模块的service-running-restart"><a href="#修改T2监控新模块的service-running-restart" class="headerlink" title="修改T2监控新模块的service running/restart"></a>修改T2监控新模块的service running/restart</h1><p>T2部分的code，包括<br>                 service在server reboot/restart后通过rpm install启动service，<br>                 service 的监控，<br>                 service的log记录等</p>
 
       
 
@@ -197,18 +212,22 @@
     <div class="article-info article-info-index">
       
       
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/personal//" class="article-tag-list-link color4">personal</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
         		</li>
       		
 		</ul>
 	</div>
 
+      
 
       
 
@@ -221,18 +240,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/27/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/25/Makefile%E7%9A%84%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Gradle与Makefile构建工具的对比
+          Makefile的common
         
       </div>
     </a>
   
   
-    <a href="/2020/02/27/Gradle%20and%20Makefile/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Gradle and Makefile</div>
+    <a href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Gradle与Makefile构建工具的对比</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -260,7 +279,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Testing" data-title="First Blog in 2020" data-url="https://jeffryfeng.github.io/2020/02/27/Testing/"></div>
+	<div class="ds-thread" data-thread-key="Gradle and Makefile结合实践" data-title="Gradle and Makefile的项目实践" data-url="https://jeffryfeng.github.io/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -407,6 +426,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VM</a>
               </li>
             
             <div class="clearfix"></div>
