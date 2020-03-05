@@ -16,7 +16,7 @@
 <meta property="og:description" content="Gitlab API download artifact，针对没有GUI界面的server 比较方便Reference: https:&#x2F;&#x2F;docs.gitlab.com&#x2F;ee&#x2F;api&#x2F;jobs.html  1） trigger一个pipeline curl -X POST -F token&#x3D;d2c1c344e871a6e5b5ae5ac65bfacf -F ref&#x3D;develop https:&#x2F;&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-03T11:22:49.000Z">
-<meta property="article:modified_time" content="2020-03-04T14:32:15.872Z">
+<meta property="article:modified_time" content="2020-03-05T14:10:41.131Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -194,7 +194,7 @@
 <p>1） trigger一个pipeline<br> curl -X POST -F token=d2c1c344e871a6e5b5ae5ac65bfacf -F ref=develop <a href="https://gitlab.com/api/v4/projects/9517/trigger/pipeline" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/trigger/pipeline</a><br>   &nbsp; &nbsp;  token:  trigger token，在project–&gt;setting–&gt;CICD–&gt;pipeline trigger<br>   &nbsp; &nbsp;  ref:  branch name<br>   &nbsp; &nbsp;  9517:  projectID  </p>
 <p>2） use this API to get pipeline’s Job with pipeline_ID<br>   curl -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs</a><br>     &nbsp; &nbsp; 9517: projectID<br>     &nbsp; &nbsp; 451710: pipelineID ,  上个步骤会返回的<br>     &nbsp; &nbsp; private-token：在 user settting–&gt;Access Tokens ,  如果没有就 add 一个，token是有期限的<br>     &nbsp; &nbsp; 这个和上面的token不一样</p>
 <p> 3）use Gitlab API to download artifact<br>     curl -X GET –header “PRIVATE-TOKEN:fe2d7NHZ7xs6GmLDJ6pE” -o artifacts.zip <a href="https://gitlab.com/api/v4/projects/9517/jobs/3612184/artifacts" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/jobs/3612184/artifacts</a><br>       &nbsp; &nbsp;  9517:  projectID<br>       &nbsp; &nbsp;  3612184:  jobID , 上个步骤会返回<br>       &nbsp; &nbsp; private-token：和2一样的</p>
-<p>4） project下某个pipeline里的所有job<br>  curl –globoff -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success</a> |jq<br>     只显示符合条件的scope[]=success，  前面要加–globoff 参数, 两个中线<br>     jp 是以json格式 显示内容  </p>
+<p>4） project下某个pipeline里的所有job<br>  curl –globoff -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success</a> |jq<br>     只显示符合条件的scope[]=success，  前面要加–globoff 参数, 两个中线<br>     jq 是以json格式 显示内容  </p>
 
       
 
@@ -231,7 +231,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          VMware workstation player和Oracle virtaul Box
+          VMware workstation player和Oracle virtual Box
         
       </div>
     </a>

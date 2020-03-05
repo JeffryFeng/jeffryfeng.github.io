@@ -176,7 +176,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/VMware%20Player%20%E5%92%8COracle%20vBox/">VMware workstation player和Oracle virtaul Box</a>
+      <a class="article-title" href="/2020/03/05/VMware%20Player%20%E5%92%8COracle%20vBox/">VMware workstation player和Oracle virtual Box</a>
     </h1>
   
 
@@ -189,12 +189,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>一般工作电脑是windows系统，但是有些code方面的工作 需要在linux上操作<br>还有软件产品一般都是running在linux OS，本地install/debug方便<br><font size="2"><strong>选择其中一个使用即可</strong></font></p>
+        <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>一般工作电脑是windows系统，但是有些code方面的工作 需要在linux上操作<br>还有软件产品一般都是running在linux OS，本地install/debug方便<br>所以需要在windows电脑上，运行一套linux系统<br><font size="2"><strong>选择其中一个使用即可</strong></font></p>
 <h1 id="下载的link"><a href="#下载的link" class="headerlink" title="下载的link"></a>下载的link</h1><p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">https://www.virtualbox.org/wiki/Downloads</a><br><a href="https://www.vmware.com/cn/products/workstation-player/workstation-player-evaluation.html" target="_blank" rel="noopener">https://www.vmware.com/cn/products/workstation-player/workstation-player-evaluation.html</a></p>
-<h1 id="共同特点"><a href="#共同特点" class="headerlink" title="共同特点"></a>共同特点</h1><p>都可以用ova/ovf导入方式安装</p>
-<h1 id="导出，在其他机器用"><a href="#导出，在其他机器用" class="headerlink" title="导出，在其他机器用"></a>导出，在其他机器用</h1><p>virtual Box可以导出ova格式的文件</p>
-<h1 id="virtal-Box-打开vdi文件或VMware的vmdk文件"><a href="#virtal-Box-打开vdi文件或VMware的vmdk文件" class="headerlink" title="virtal Box 打开vdi文件或VMware的vmdk文件"></a>virtal Box 打开vdi文件或VMware的vmdk文件</h1><p>在VirtualBox中启动“新建”向导。<br>第一步，输入名称“name”，文件夹:配置存放位置，选择系统类型为“Linux”。<br>第二步，内存大小默认是4096M<br>第三步，虚拟硬盘，点击按钮“使用现有的虚拟硬盘文件”，在新打开的“虚拟存储管理器”中，点击工具栏的“注册”按钮，在文件对话框中选中下载的“ubuntu.vdi”文件，注册成功后，选中该虚拟磁盘文件，点击右下角“选择”按钮。</p>
-
+        
+          <a class="article-more-a" href="/2020/03/05/VMware%20Player%20%E5%92%8COracle%20vBox/#more">more >></a>
+        
       
 
       
@@ -271,7 +270,7 @@
 <p>1） trigger一个pipeline<br> curl -X POST -F token=d2c1c344e871a6e5b5ae5ac65bfacf -F ref=develop <a href="https://gitlab.com/api/v4/projects/9517/trigger/pipeline" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/trigger/pipeline</a><br>   &nbsp; &nbsp;  token:  trigger token，在project–&gt;setting–&gt;CICD–&gt;pipeline trigger<br>   &nbsp; &nbsp;  ref:  branch name<br>   &nbsp; &nbsp;  9517:  projectID  </p>
 <p>2） use this API to get pipeline’s Job with pipeline_ID<br>   curl -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs</a><br>     &nbsp; &nbsp; 9517: projectID<br>     &nbsp; &nbsp; 451710: pipelineID ,  上个步骤会返回的<br>     &nbsp; &nbsp; private-token：在 user settting–&gt;Access Tokens ,  如果没有就 add 一个，token是有期限的<br>     &nbsp; &nbsp; 这个和上面的token不一样</p>
 <p> 3）use Gitlab API to download artifact<br>     curl -X GET –header “PRIVATE-TOKEN:fe2d7NHZ7xs6GmLDJ6pE” -o artifacts.zip <a href="https://gitlab.com/api/v4/projects/9517/jobs/3612184/artifacts" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/jobs/3612184/artifacts</a><br>       &nbsp; &nbsp;  9517:  projectID<br>       &nbsp; &nbsp;  3612184:  jobID , 上个步骤会返回<br>       &nbsp; &nbsp; private-token：和2一样的</p>
-<p>4） project下某个pipeline里的所有job<br>  curl –globoff -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success</a> |jq<br>     只显示符合条件的scope[]=success，  前面要加–globoff 参数, 两个中线<br>     jp 是以json格式 显示内容  </p>
+<p>4） project下某个pipeline里的所有job<br>  curl –globoff -X GET –header “PRIVATE-TOKEN:xLtDu6T_NmVk7tKxSeWa” <a href="https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success" target="_blank" rel="noopener">https://gitlab.com/api/v4/projects/9517/pipelines/451710/jobs?scope[]=success</a> |jq<br>     只显示符合条件的scope[]=success，  前面要加–globoff 参数, 两个中线<br>     jq 是以json格式 显示内容  </p>
 
       
 
@@ -345,7 +344,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="添加submodule-命令"><a href="#添加submodule-命令" class="headerlink" title="添加submodule 命令"></a>添加submodule 命令</h1><p>git submodule add -b BranchName  ssh://git@*.git   src/fjw<br>   &nbsp; &nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch<br>   &nbsp; &nbsp; src/fjw 在哪个目录下建立submodule， 不指定就是当前目录<br>命令完成后，在scr/fjw/下自动create一个目录，和根目录下create一个.gitmodule 文件<br>如果本来就有.gitmodules文件， 会在文件追加submodule</p>
+        <h1 id="添加submodule-命令"><a href="#添加submodule-命令" class="headerlink" title="添加submodule 命令"></a>添加submodule 命令</h1><p>git submodule add -b BranchName  ssh://git@*.git   src/fjw<br>   &nbsp; &nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch<br>   &nbsp; &nbsp; src/fjw 在哪个目录下建立submodule， 不指定就是当前目录<br>命令完成后，自动create一个.gitmodules文件在项目跟目录下，和一个submodule项目目录在scr/fjw/下<br>如果本来就有.gitmodules文件， 在文件后面再追加一个submodule</p>
 <h1 id="更新submodule的最新code"><a href="#更新submodule的最新code" class="headerlink" title="更新submodule的最新code"></a>更新submodule的最新code</h1>
         
           <a class="article-more-a" href="/2020/03/01/git%20submodule/#more">more >></a>
@@ -427,14 +426,10 @@
 <p>   命令行的行首 必须要tab 空格<br>   依赖可以有多个<br>   注释行 #<br>   命令行太长， 行尾用\ 换行   </p>
 <p>2，cd 命令只在当前行有用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ojet_gui </span><br><span class="line">bash build.sh</span><br></pre></td></tr></table></figure>
-<p>  上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh<br>  要这样写成一行: cd ojet_gui &amp;&amp; bash buid.sh</p>
-<p>3，在makefile的$都要用$$代替</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export GIT_REVISION :&#x3D; $&#123;shell git describe|awk -F- &#39;&#123;print $1&#125;&#39;&#125;  --NOK</span><br><span class="line">export GIT_REVISION :&#x3D; $&#123;shell git describe|awk -F- &#39;&#123;print $$1&#125;&#39;&#125;   --OK</span><br></pre></td></tr></table></figure>
-
-<p>4，条件表达式的语法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;conditional-directive&gt;     &#x2F;&#x2F;有4种： ifeq&#x2F;ifneq&#x2F;ifdef&#x2F;ifndef</span><br><span class="line">&lt;text-if-true&gt;</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line">&lt;conditional-directive&gt;</span><br><span class="line">&lt;text-if-true&gt;</span><br><span class="line">else              &#x2F;&#x2F;“else”之后就是当条件不满足时的执行部分。不是所有的条件语句都需要此部分</span><br><span class="line">&lt;text-if-false&gt;</span><br><span class="line">endif             &#x2F;&#x2F;任何一个条件表达式都必须以“endif”结束</span><br></pre></td></tr></table></figure>
-<p>5，makefile有很多自带的函数<br>官方网站 第8节：<br><a href="https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text</a><br>&nbsp; &nbsp;abspath函数: 主要用于将_names中的各路径转换成绝对路径，并将转换后的结果返回<br>&nbsp; &nbsp;addprefix函数: 给名字列表_names中的每一个名字增加前缀_prefix，并将增加了前缀的名字列表返回<br>&nbsp; &nbsp;addsuffix函数: 给名字列表_names中的每一个名字增加后缀_suffix，并将增加了后缀_suffix的名字列表返回<br>&nbsp; &nbsp;filter函数:从一个名字列表_text中根据模式_pattern得到满足需要的名字列表返回<br>&nbsp; &nbsp;strip函数: 清除名字列表中的多余空格<br>&nbsp; &nbsp;</p>
-
+<p>  上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh<br>  要这样写成一行: cd ojet_gui &amp;&amp; bash buid.sh<br>
+        
+          <a class="article-more-a" href="/2020/02/25/Makefile%E7%9A%84%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/#more">more >></a>
+        
       
 
       
@@ -507,7 +502,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>老产品的重要模块用Spring Boot 和Spring MVC重构，用Gralde默认编译的是Jar包<br>由于该模块还要integrate到老产品一起install/deploy，而且以rpm的安装部署方式，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件 ，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
+        <p>由于老产品的一个模块性能不高，用Spring Boot和Spring MVC重构，Gradle默认编译的是Jar包<br>考虑到该模块要integrate到老产品 用rpm包安装部署，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
 <h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1>
         
           <a class="article-more-a" href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/#more">more >></a>
@@ -674,9 +669,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="3-roles"><a href="#3-roles" class="headerlink" title="3 roles"></a>3 roles</h1><p>PO(Product Owner):<br>Master:<br>Scrum Team:  自组织、自管理 跨职能的团队 ，包含architect，对技术细节的把握</p>
-<h1 id="3-aritfacts"><a href="#3-aritfacts" class="headerlink" title="3 aritfacts"></a>3 aritfacts</h1><h2 id="Product-Backlog"><a href="#Product-Backlog" class="headerlink" title="Product Backlog:"></a>Product Backlog:</h2><p>项目的需求列表<br>有优先级<br>Jira里就是Epic  </p>
-<h2 id="Sprint-Backlog"><a href="#Sprint-Backlog" class="headerlink" title="Sprint Backlog:"></a>Sprint Backlog:</h2><p>Jira里就是story,<br>Priority优先级<br>估计时间<br>Story要在Grooming Meeting的时候review，不过PO写story要遵循DoD（Definition of Done）<br>developer拿到story 会写sub-task，一般一个subtask的耗时一天  </p>
-<h2 id="Increment"><a href="#Increment" class="headerlink" title="Increment:"></a>Increment:</h2><p>Jira里可以通过Burndown chart 查看进展情况<br>the most important Scrum artifact<br>Review meeting的汇报和demo</p>
+<h1 id="3-aritfacts"><a href="#3-aritfacts" class="headerlink" title="3 aritfacts"></a>3 aritfacts</h1><h2 id="Product-Backlog"><a href="#Product-Backlog" class="headerlink" title="Product Backlog:"></a>Product Backlog:</h2><p>项目的需求列表<br>有优先级<br>Jira Epic  </p>
+<h2 id="Sprint-Backlog"><a href="#Sprint-Backlog" class="headerlink" title="Sprint Backlog:"></a>Sprint Backlog:</h2><p>Jira story,  PO写story要遵循DoD（Definition of Done）<br>Priority优先级<br>估计时间<br>Story要在Grooming Meeting的时候review，<br>developer拿到story 会写sub-task，一般一个subtask的耗时一天  </p>
+<h2 id="Increment"><a href="#Increment" class="headerlink" title="Increment:"></a>Increment:</h2><p>the most important Scrum artifact<br>Jira里可以通过Burndown chart 查看进展情况<br>Review meeting的汇报和demo</p>
         
           <a class="article-more-a" href="/2020/02/21/Scrum/#more">more >></a>
         

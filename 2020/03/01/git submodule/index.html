@@ -16,7 +16,7 @@
 <meta property="og:description" content="添加submodule 命令git submodule add -b BranchName  ssh:&#x2F;&#x2F;git@*.git   src&#x2F;fjw   &amp;nbsp; &amp;nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch   &amp;nbsp; &amp;nbsp; src&#x2F;fjw 在哪个目录下建立submodule， 不指定就">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-01T11:22:49.000Z">
-<meta property="article:modified_time" content="2020-03-04T12:32:57.153Z">
+<meta property="article:modified_time" content="2020-03-05T14:09:44.208Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
@@ -190,10 +190,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="添加submodule-命令"><a href="#添加submodule-命令" class="headerlink" title="添加submodule 命令"></a>添加submodule 命令</h1><p>git submodule add -b BranchName  ssh://git@*.git   src/fjw<br>   &nbsp; &nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch<br>   &nbsp; &nbsp; src/fjw 在哪个目录下建立submodule， 不指定就是当前目录<br>命令完成后，在scr/fjw/下自动create一个目录，和根目录下create一个.gitmodule 文件<br>如果本来就有.gitmodules文件， 会在文件追加submodule</p>
+        <h1 id="添加submodule-命令"><a href="#添加submodule-命令" class="headerlink" title="添加submodule 命令"></a>添加submodule 命令</h1><p>git submodule add -b BranchName  ssh://git@*.git   src/fjw<br>   &nbsp; &nbsp; -b 用submodule的哪个branch，如果不指定branch 就是submodule配置的default branch<br>   &nbsp; &nbsp; src/fjw 在哪个目录下建立submodule， 不指定就是当前目录<br>命令完成后，自动create一个.gitmodules文件在项目跟目录下，和一个submodule项目目录在scr/fjw/下<br>如果本来就有.gitmodules文件， 在文件后面再追加一个submodule</p>
 <h1 id="更新submodule的最新code"><a href="#更新submodule的最新code" class="headerlink" title="更新submodule的最新code"></a>更新submodule的最新code</h1><a id="more"></a>
 <p>0）查看本地修改 git status，未完成的code先git stash起来<br>&nbsp; &nbsp; git pull 从gitlab同步本工程code，以免后期push有conflict<br>1）在项目根路径下 git submodule update –init –recursive –remote<br>2）到submodle project下，<br>&nbsp; &nbsp; git checkout develop<br>&nbsp; &nbsp; git pull<br>3）把这个submodule project的code 拉下来后，一般情况下 是要和本project经过测试是OK的，然后commit上去。<br>如果只是执行 git submodule update –init –recursive –remote  这个命令 是把submodule最新的code 拉过来了，<br>虽然submodule的code是最新的，但是没有和本project配合测试， 并不能保证就是和本项目完美配合的code.<br>4）返回项目根路径下，提交新的commitID到gitlab<br>&nbsp; &nbsp;  git add src/apps/config_editor/backend<br>&nbsp; &nbsp;  git add src/apps/config_editor/ojet_gui<br>&nbsp; &nbsp;  git commit<br>&nbsp; &nbsp;  git push </p>
-<p>这样后，其他人在执行git submodule update后，从gitlab server上拉的就是 submodule的code就是 本次提交的commitID。并且这个code是经过测试时OK的<br>要不然 gitlab server 上本project一直没有udpate到最新的commitID，只有step4后才行</p>
+<p>这样后，其他人在执行git submodule update后，拉的submodule的code才是对应的 本次提交的commit。<br>要不然 gitlab server 上本project的submodule对应的commitID一直没有udpate</p>
 
       
 

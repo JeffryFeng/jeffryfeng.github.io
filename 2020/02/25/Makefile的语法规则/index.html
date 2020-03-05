@@ -16,7 +16,7 @@
 <meta property="og:description" content="1，基本语法 12目标：依赖&lt;tab&gt;命令    命令行的行首 必须要tab 空格   依赖可以有多个   注释行 #   命令行太长， 行尾用\ 换行    2，cd 命令只在当前行有用 12cd ojet_gui bash build.sh   上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh  要这样">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-25T11:23:42.000Z">
-<meta property="article:modified_time" content="2020-03-04T12:32:22.889Z">
+<meta property="article:modified_time" content="2020-03-05T14:02:06.068Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="MakeFile">
 <meta name="twitter:card" content="summary">
@@ -195,7 +195,7 @@
 <p>   命令行的行首 必须要tab 空格<br>   依赖可以有多个<br>   注释行 #<br>   命令行太长， 行尾用\ 换行   </p>
 <p>2，cd 命令只在当前行有用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ojet_gui </span><br><span class="line">bash build.sh</span><br></pre></td></tr></table></figure>
-<p>  上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh<br>  要这样写成一行: cd ojet_gui &amp;&amp; bash buid.sh</p>
+<p>  上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh<br>  要这样写成一行: cd ojet_gui &amp;&amp; bash buid.sh<br>  <a id="more"></a></p>
 <p>3，在makefile的$都要用$$代替</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export GIT_REVISION :&#x3D; $&#123;shell git describe|awk -F- &#39;&#123;print $1&#125;&#39;&#125;  --NOK</span><br><span class="line">export GIT_REVISION :&#x3D; $&#123;shell git describe|awk -F- &#39;&#123;print $$1&#125;&#39;&#125;   --OK</span><br></pre></td></tr></table></figure>
 
