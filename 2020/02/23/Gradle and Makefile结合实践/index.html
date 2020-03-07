@@ -17,7 +17,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jeffryfeng.github.io/img/Gradle/gradle-ospackage-plugin.jpg">
 <meta property="article:published_time" content="2020-02-23T02:38:42.000Z">
-<meta property="article:modified_time" content="2020-03-05T13:56:30.233Z">
+<meta property="article:modified_time" content="2020-03-07T09:42:54.193Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="Gradle">
 <meta property="article:tag" content="MakeFile">
@@ -72,7 +72,7 @@
 			</ul>
 		</nav>
 		<nav>
-		   total 8
+		   total 9
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -208,7 +208,7 @@
 <h1 id="老的项目是通过git-submodule引入新模块"><a href="#老的项目是通过git-submodule引入新模块" class="headerlink" title="老的项目是通过git submodule引入新模块"></a>老的项目是通过git submodule引入新模块</h1><h1 id="修改老项目的Makefile"><a href="#修改老项目的Makefile" class="headerlink" title="修改老项目的Makefile"></a>修改老项目的Makefile</h1><p>新模块add makefile如下<br>老产品总入口的Makefile  invoke this makefile，  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">all:build_config_editor_backend</span><br><span class="line">	echo &quot;..........copy buildout config_editor RPM package to outwebcfg&#x2F;pkg&#x2F;..........&quot;</span><br><span class="line">	cp $(OUT_CONFIG_EDITOR_RPM_PKG_DIR)&#x2F;configEditor-*.rpm $(CONFIG_EDITOR_RPM_PKG_W_VERSION)</span><br><span class="line"></span><br><span class="line">build_config_editor_backend</span><br><span class="line">	echo &quot;..........start to build config_editor_backend..........&quot;</span><br><span class="line">	cd backend &amp;&amp; cp -r ..&#x2F;ojet_gui&#x2F;web .&#x2F;src&#x2F;main&#x2F;resources&#x2F;static&#x2F; &amp;&amp; gradle clean build buildRpm -x test</span><br></pre></td></tr></table></figure>
 
-<h1 id="修改T2监控新模块的service-running-restart"><a href="#修改T2监控新模块的service-running-restart" class="headerlink" title="修改T2监控新模块的service running/restart"></a>修改T2监控新模块的service running/restart</h1><p>T2部分的code，包括<br>                 通过rpm install安装启动service<br>                 service的restart ，如果server reboot/restart了<br>                 service 的监控，<br>                 service的log记录等</p>
+<h1 id="修改T2监控新模块的service-running-restart"><a href="#修改T2监控新模块的service-running-restart" class="headerlink" title="修改T2监控新模块的service running/restart"></a>修改T2监控新模块的service running/restart</h1><p>T2部分的code，包括<br>1). 通过rpm install安装启动service<br>2). service的restart ，如果server reboot/restart了<br>3). service 的监控，<br>4). service的log记录等</p>
 
       
 

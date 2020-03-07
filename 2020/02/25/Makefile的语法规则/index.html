@@ -16,7 +16,7 @@
 <meta property="og:description" content="1，基本语法 12目标：依赖&lt;tab&gt;命令    命令行的行首 必须要tab 空格   依赖可以有多个   注释行 #   命令行太长， 行尾用\ 换行    2，cd 命令只在当前行有用 12cd ojet_gui bash build.sh   上面分成两行写不行， 因为这样 并没有进入 ojet_gui目录去执行build.sh脚本，而是执行当前目录下的build.sh  要这样">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-02-25T11:23:42.000Z">
-<meta property="article:modified_time" content="2020-03-05T14:02:06.068Z">
+<meta property="article:modified_time" content="2020-03-07T09:41:04.946Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="MakeFile">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-		   total 8
+		   total 9
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -207,7 +207,7 @@
 
 <p>4，条件表达式的语法为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;conditional-directive&gt;     &#x2F;&#x2F;有4种： ifeq&#x2F;ifneq&#x2F;ifdef&#x2F;ifndef</span><br><span class="line">&lt;text-if-true&gt;</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line">&lt;conditional-directive&gt;</span><br><span class="line">&lt;text-if-true&gt;</span><br><span class="line">else              &#x2F;&#x2F;“else”之后就是当条件不满足时的执行部分。不是所有的条件语句都需要此部分</span><br><span class="line">&lt;text-if-false&gt;</span><br><span class="line">endif             &#x2F;&#x2F;任何一个条件表达式都必须以“endif”结束</span><br></pre></td></tr></table></figure>
-<p>5，makefile有很多自带的函数<br>官方网站 第8节：<br><a href="https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text</a><br>&nbsp; &nbsp;abspath函数: 主要用于将_names中的各路径转换成绝对路径，并将转换后的结果返回<br>&nbsp; &nbsp;addprefix函数: 给名字列表_names中的每一个名字增加前缀_prefix，并将增加了前缀的名字列表返回<br>&nbsp; &nbsp;addsuffix函数: 给名字列表_names中的每一个名字增加后缀_suffix，并将增加了后缀_suffix的名字列表返回<br>&nbsp; &nbsp;filter函数:从一个名字列表_text中根据模式_pattern得到满足需要的名字列表返回<br>&nbsp; &nbsp;strip函数: 清除名字列表中的多余空格<br>&nbsp; &nbsp;</p>
+<p>5，makefile有很多自带的函数<br>官方网站 第8节：<br><a href="https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/make.html#toc-Functions-for-Transforming-Text</a><br>1). abspath函数: 主要用于将_names中的各路径转换成绝对路径，并将转换后的结果返回<br>1). addprefix函数: 给名字列表_names中的每一个名字增加前缀_prefix，并将增加了前缀的名字列表返回<br>1). addsuffix函数: 给名字列表_names中的每一个名字增加后缀_suffix，并将增加了后缀_suffix的名字列表返回<br>1). filter函数: 从一个名字列表_text中根据模式_pattern得到满足需要的名字列表返回<br>1). strip函数: 清除名字列表中的多余空格</p>
 
       
 
