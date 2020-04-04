@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>Scrum 理论 | Jeffry Feng Blog</title>
+  <title>通过GUI前台定位分析后台问题 | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="公司实施敏捷3年了，开始的时候也参加了Scrum的培训，拿到Scrum Alliance的认证。同时美国的老板是SAFe专家, 管理经验也相当丰富。先来写写对Scrum的理解吧    Scrum 是一个用于开发和维护复杂产品的框架 ，是一个增量的、迭代的开发过程。在这个框架中，整个开发过程由若干个迭代周期组成，一个迭代周期称为一个Sprint，一般是2到4周。在Scrum中，使用产品Backlog">
+  <meta name="description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间size&#x2F;timing 等参数都可以排序 如果step2花费时间比较长，进入performance选项，查看具体的花费时间 Element选项时定位用的，写selenium自动化测试的用的比">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Scrum 理论">
-<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/21/Scrum%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/index.html">
+<meta property="og:title" content="通过GUI前台定位分析后台问题">
+<meta property="og:url" content="https://jeffryfeng.github.io/2020/03/12/%E9%80%9A%E8%BF%87GUI%E5%89%8D%E5%8F%B0%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="公司实施敏捷3年了，开始的时候也参加了Scrum的培训，拿到Scrum Alliance的认证。同时美国的老板是SAFe专家, 管理经验也相当丰富。先来写写对Scrum的理解吧    Scrum 是一个用于开发和维护复杂产品的框架 ，是一个增量的、迭代的开发过程。在这个框架中，整个开发过程由若干个迭代周期组成，一个迭代周期称为一个Sprint，一般是2到4周。在Scrum中，使用产品Backlog">
+<meta property="og:description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间size&#x2F;timing 等参数都可以排序 如果step2花费时间比较长，进入performance选项，查看具体的花费时间 Element选项时定位用的，写selenium自动化测试的用的比">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-21T11:23:57.000Z">
-<meta property="article:modified_time" content="2020-03-26T10:43:24.655Z">
+<meta property="article:published_time" content="2020-03-12T04:23:57.000Z">
+<meta property="article:modified_time" content="2020-04-04T09:34:05.358Z">
 <meta property="article:author" content="Jeffry Feng">
-<meta property="article:tag" content="Scrum">
+<meta property="article:tag" content="Test">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Jeffry Feng Blog" type="application/atom+xml">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-		   total 12
+		   total 13
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -176,45 +176,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Scrum核心要点" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-通过GUI前台定位分析后台问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Scrum 理论
+      通过GUI前台定位分析后台问题
     </h1>
   
 
         
-        <a href="/2020/02/21/Scrum%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/" class="archive-article-date">
-  	<time datetime="2020-02-21T11:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-21</time>
+        <a href="/2020/03/12/%E9%80%9A%E8%BF%87GUI%E5%89%8D%E5%8F%B0%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-03-12T04:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>公司实施敏捷3年了，开始的时候也参加了Scrum的培训，拿到Scrum Alliance的认证。<br>同时美国的老板是SAFe专家, 管理经验也相当丰富。<br>先来写写对Scrum的理解吧  </p>
-<hr>
-<p>Scrum 是一个用于开发和维护复杂产品的框架 ，是一个增量的、迭代的开发过程。<br>在这个框架中，整个开发过程由若干个迭代周期组成，一个迭代周期称为一个Sprint，一般是2到4周。<br>在Scrum中，使用产品Backlog来管理产品的需求，产品backlog是一个按照商业价值排序的需求列表，体现形式为user story。Scrum团队总是先开发对客户具有较高价值的需求。<br>在Sprint中，Scrum团队从产品Backlog中挑选最高优先级的需求进行开发。挑选的需求在Sprint计划会议上经过讨论、分析和估算得到相应的任务列表，称为Sprint backlog。<br>在每个迭代结束时，Scrum团队将递交潜在可交付的产品增量。 </p>
-<a id="more"></a>
-<h1 id="Scrum理论核心"><a href="#Scrum理论核心" class="headerlink" title="Scrum理论核心"></a>Scrum理论核心</h1><p>“透明、检验、调整”是过程控制理论的三大支柱<br>透明：建立信任的环境，尽早暴露风险。<br>检验：CI/CD，Code Review，验收测试。<br>调整：Retrospective，Demo，Planning，Prioritization and Estimation  </p>
-<h1 id="Scrun-基础框架-3355"><a href="#Scrun-基础框架-3355" class="headerlink" title="Scrun 基础框架 3355"></a>Scrun 基础框架 3355</h1><h1 id="3-roles"><a href="#3-roles" class="headerlink" title="3 roles"></a>3 roles</h1><p>PO(Product Owner):<br>Master:<br>Scrum Team:  自组织、自管理 跨(全)职能的团队 ，包含architect，对技术细节的把握</p>
-<h1 id="3-aritfacts"><a href="#3-aritfacts" class="headerlink" title="3 aritfacts"></a>3 aritfacts</h1><h2 id="Product-Backlog"><a href="#Product-Backlog" class="headerlink" title="Product Backlog:"></a>Product Backlog:</h2><p>项目的需求列表<br>有优先级<br>Jira Epic  </p>
-<h2 id="Sprint-Backlog"><a href="#Sprint-Backlog" class="headerlink" title="Sprint Backlog:"></a>Sprint Backlog:</h2><p>Jira story,  PO写story要遵循DoD（Definition of Done）<br>Priority优先级<br>估计时间<br>Story要在Grooming Meeting的时候review，<br>developer拿到story 会写sub-task，一般一个subtask的耗时一天  </p>
-<h2 id="Increment"><a href="#Increment" class="headerlink" title="Increment:"></a>Increment:</h2><p>the most important Scrum artifact<br>Jira里可以通过Burndown chart 查看进展情况<br>Review meeting的汇报和demo</p>
-<h1 id="5-meetings"><a href="#5-meetings" class="headerlink" title="5 meetings"></a>5 meetings</h1><h2 id="Planning-Meeting"><a href="#Planning-Meeting" class="headerlink" title="Planning Meeting:"></a>Planning Meeting:</h2><p>整个项目的roadmap，现今市场情况<br>整个项目的planning时间规划<br>需求的分析<br>讨论哪些需求先做，需求间是否有依赖性<br>每个sprint的主要工作<br>是否需要什么support</p>
-<h2 id="Grooming-Meeting"><a href="#Grooming-Meeting" class="headerlink" title="Grooming Meeting:"></a>Grooming Meeting:</h2><p>Story的review<br>story的理解和预估时间</p>
-<h2 id="Daily-Standup"><a href="#Daily-Standup" class="headerlink" title="Daily Standup:"></a>Daily Standup:</h2><p>三个问题：<br>1）本次会议之前，自己做了什么？<br>2）本次会议之后，自己打算或计划做什么？<br>3）目前，是否遇到了阻碍自己的问题？<br> 现实中差不多成为向manager汇报工作了<br> 比较强势的人容易主导会议</p>
-<h2 id="Review-Meeting"><a href="#Review-Meeting" class="headerlink" title="Review Meeting:"></a>Review Meeting:</h2><p>给stakeholder展示当前sprint的成果<br>按照道理不用大准备,但是我们给美国人demo，基本上都要准备一天<br>在confluence上写一个summary:包括story status，需要demo的东西</p>
-<h2 id="Retrospective-Meeting"><a href="#Retrospective-Meeting" class="headerlink" title="Retrospective Meeting:"></a>Retrospective Meeting:</h2><p>周期性检视团队最佳实践以及存在的问题， 经验的总结、反思，并拟定相应的改进措施<br>每个人发表两点：针对自己做的好的地方，做的不好 需要改进的地方，最好给我怎么改进 </p>
-<h1 id="5-values"><a href="#5-values" class="headerlink" title="5 values"></a>5 values</h1><p>1）Focus<br>2）courage<br>有勇气接受看似不可能的挑战，<br>又要有勇气拼尽全力去完成个人承诺要交付的成果，<br>更要有勇气对不合理的要求说“不<br>3）Openness<br>每个人都会遇到障碍，每个人都会有长于别人、弱于别人之处。<br>保持开放的心态，公开透明地展示自己的强项、弱点，明确地展示自己的工作进展、遇到的障碍等状态<br>4）Respect<br>5）Commitment  </p>
-<p> 要保持passion 积极的工作态度</p>
-<h1 id="敏捷宣言"><a href="#敏捷宣言" class="headerlink" title="敏捷宣言"></a>敏捷宣言</h1><p>个体和交互 胜过 过程和工具<br>可用的软件 胜过 完备的文档<br>客户协作 胜过 合同谈判<br>响应变化 胜过 遵循计划  </p>
-<h1 id="敏捷12个原则"><a href="#敏捷12个原则" class="headerlink" title="敏捷12个原则"></a>敏捷12个原则</h1><p>1)我们最重要的目标，是通过持续不断地及早交付有价值的软件使客户满意。<br>Scrum：产品需求列表中的优先级及每次迭代后持续提交工作软件<br>2)欣然面对需求变化，即使在开发后期也一样。为了客户的竞争优势，敏捷过程掌控变化。<br>Scrum：产品需求列表可以随时更新<br>3)经常地交付可工作的软件，相隔几星期或一两个月，倾向于采取较短的周期。<br>Scrum：1-4周的的迭代周期<br>4)业务人员和开发人员必须相互合作，项目中的每一天都不例外。<br>Scrum：跨职能团队及每日15分钟的站立会议<br>5)激发个体的斗志，以他们为核心搭建项目。提供所需的环境和支援，辅以信任，从而达成目标。<br>Scrum：团队自我管理原则<br>6)不论团队内外，传递信息效果最好和效率最高的方式是面对面的交谈。<br>Scrum：5~9人的小团队，白板的使用以及开放环境的面对面沟通<br>7)可工作的软件是进度的首要度量标准。<br>Scrum：对工作的软件的关注，演示会要求提供可以被验收和演示的内容<br>8)敏捷过程倡导可持续开发。责任人、开发人员和用户要能够共同维持其步调稳定延续。<br>Scrum：时间盒概念，迭代速率的使用<br>9)坚持不懈地追求技术卓越和良好设计，敏捷能力由此增强。<br>Scrum：要求对产品需求列表中每个用户故事都定义一个完成标准；<br>10)以简洁为本，它是极力减少不必要工作量的艺术。<br>Scrum：尽量制作正好够的东西已经在恰当时间做决策<br>11)最好的架构、需求和设计出自组织团队。<br>Scrum：如何做完全放在团队手中；<br>12)团队定期地反思如何能提高成效，并依此调整自身的举止表现。<br>Scrum：回顾会的作用</p>
-<h1 id="项目中使用的工具-JIRA-Confluence-Slack"><a href="#项目中使用的工具-JIRA-Confluence-Slack" class="headerlink" title="项目中使用的工具 JIRA Confluence Slack"></a>项目中使用的工具 JIRA Confluence Slack</h1>
+        <ol>
+<li>前台GUI页面不正常时，按F12进入Network选项</li>
+<li>然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间<br>size/timing 等参数都可以排序</li>
+<li>如果step2花费时间比较长，进入performance选项，查看具体的花费时间</li>
+<li>Element选项时定位用的，写selenium自动化测试的用的比较多</li>
+<li>Memory选择可以看load页面消耗主机多少内存</li>
+<li>ssh到后台server，查看相关的log定位问题</li>
+</ol>
+
       
 
       
@@ -227,7 +217,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Test</a>
         		</li>
       		
 		</ul>
@@ -246,18 +236,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/02/21/Scrum%20Story/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          敏捷 Story
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/20/Hello%20Blog/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">First Blog in 2020</div>
+    <a href="/2020/03/12/gradle%E7%BC%96%E8%AF%91%E7%9A%84package%E5%B8%A63rdsource/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">gradle编译的package带第三方source包</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -285,7 +266,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Scrum核心要点" data-title="Scrum 理论" data-url="https://jeffryfeng.github.io/2020/02/21/Scrum%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9/"></div>
+	<div class="ds-thread" data-thread-key="通过GUI前台定位分析后台问题" data-title="通过GUI前台定位分析后台问题" data-url="https://jeffryfeng.github.io/2020/03/12/%E9%80%9A%E8%BF%87GUI%E5%89%8D%E5%8F%B0%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

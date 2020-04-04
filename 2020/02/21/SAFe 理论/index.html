@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
-  <title>Jeffry Feng Blog</title>
+  <title>SAFe 基础理论 | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jeffry Feng Blog">
-<meta property="og:url" content="https://jeffryfeng.github.io/page/2/index.html">
+  <meta name="description" content="Reference: https:&#x2F;&#x2F;www.scaledagileframework.com&#x2F;           https:&#x2F;&#x2F;www.scaledagileframework.com&#x2F;essential-safe&#x2F; Essential SAFe Ten Critical ART Success Factors  术语ART: Agile Release TrainPI: Program I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SAFe 基础理论">
+<meta property="og:url" content="https://jeffryfeng.github.io/2020/02/21/SAFe%20%E7%90%86%E8%AE%BA/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="description">
+<meta property="og:description" content="Reference: https:&#x2F;&#x2F;www.scaledagileframework.com&#x2F;           https:&#x2F;&#x2F;www.scaledagileframework.com&#x2F;essential-safe&#x2F; Essential SAFe Ten Critical ART Success Factors  术语ART: Agile Release TrainPI: Program I">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jeffryfeng.github.io/img/SAFe/Scaled-Agile-Framework-_Essential.png">
+<meta property="og:image" content="https://jeffryfeng.github.io/img/SAFe/Essential_level_TenSuccessFactors.png">
+<meta property="og:image" content="https://jeffryfeng.github.io/img/SAFe/Scrum-SAFe.jpg">
+<meta property="article:published_time" content="2020-02-21T13:23:57.000Z">
+<meta property="article:modified_time" content="2020-04-04T09:31:47.043Z">
 <meta property="article:author" content="Jeffry Feng">
+<meta property="article:tag" content="Scrum">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jeffryfeng.github.io/img/SAFe/Scaled-Agile-Framework-_Essential.png">
   
     <link rel="alternative" href="/atom.xml" title="Jeffry Feng Blog" type="application/atom+xml">
   
@@ -173,101 +180,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Gradle与Makefile构建工具的对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-SAFe 理论" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/">Gradle与Makefile构建工具的对比</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" class="archive-article-date">
-  	<time datetime="2020-02-22T11:22:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- toc -->
-<p>都是通过一些配置文件和脚本来完成代码的依赖、第三方库的引入、编译的自动化配置等功能  </p>
-<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>是由一个个”规则”组成，每个”规则”都是由”目标”、”依赖”、”命令”构成<br>makefile最核心的构建思想，通过一个个”目标”、”依赖”、”命令”来完成整个项目的关联和编译</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.PHONY: clean</span><br><span class="line">all: hello</span><br><span class="line">hello: hello.c</span><br><span class="line">    gcc -o hello hello.c</span><br><span class="line">clean:</span><br><span class="line">    rm hello</span><br></pre></td></tr></table></figure>
-<p>这里有三个”目标”，分别是: “all”，”hello”，”clean”,  当执行”make”命令时，编译器会默认查找目标”all” ，如果没有”all”则会查找Makefile文件的第一个目标</p>
-<h1 id="Gradle，-最核心的构建规都则交给了Plugin来完成"><a href="#Gradle，-最核心的构建规都则交给了Plugin来完成" class="headerlink" title="Gradle， 最核心的构建规都则交给了Plugin来完成"></a>Gradle， 最核心的构建规都则交给了Plugin来完成</h1>
-        
-          <a class="article-more-a" href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-SAFe 理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/21/SAFe%20%E7%90%86%E8%AE%BA/">SAFe 基础理论</a>
+    <h1 class="article-title" itemprop="name">
+      SAFe 基础理论
     </h1>
   
 
@@ -284,9 +204,16 @@
 <h1 id="Essential-SAFe"><a href="#Essential-SAFe" class="headerlink" title="Essential SAFe"></a>Essential SAFe</h1><p><img src="/img/SAFe/Scaled-Agile-Framework-_Essential.png" alt="avatar"></p>
 <h1 id="Ten-Critical-ART-Success-Factors"><a href="#Ten-Critical-ART-Success-Factors" class="headerlink" title="Ten Critical ART Success Factors"></a>Ten Critical ART Success Factors</h1><p> <img src="/img/SAFe/Essential_level_TenSuccessFactors.png" alt="avatar"></p>
 <h1 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h1><p>ART: Agile Release Train<br>PI: Program Increment<br>    &nbsp; &nbsp; 一个 PI 周期可以是 8-12 周的长度，包含一个位于最末端的 IP (Innovation and Planning) Sprint<br>    &nbsp; &nbsp; 计划一个可量化/可实现/可测量验收的roadmap<br>IP: Innovation and Planning<br>    &nbsp; &nbsp; 第一周对新功能进行系统级别的验证和回归测试，第二周对下个release进行plan<br>RTE: Release Train Engineer<br>Architectural Runway: 跑道<br>BO: Bussiness Owner<br>PM: Product Management</p>
-        
-          <a class="article-more-a" href="/2020/02/21/SAFe%20%E7%90%86%E8%AE%BA/#more">more >></a>
-        
+<a id="more"></a>
+
+<h1 id="SAFe主要角色"><a href="#SAFe主要角色" class="headerlink" title="SAFe主要角色:"></a>SAFe主要角色:</h1><h2 id="ART-Role"><a href="#ART-Role" class="headerlink" title="ART Role"></a>ART Role</h2><p><strong>Product Management</strong>:<br> Represents the internal voice of the customer<br> and works with customers and Product Owners to understand and communicate their needs,<br> define system features, and participate in validating results.<br> They are responsible for the Program Backlog.<br><strong>System Architect/Engineering</strong>:<br> Is an individual or small cross-discipline team that truly applies Principle #2, Apply Systems Thinking.<br> They define the overall architecture for the system,<br> help identify Nonfunctional Requirements (NFRs),<br> determine the significant elements and subsystems,<br> and help design the interfaces and collaborations among them.<br><strong>RTE</strong>:<br> Is a servant leader and the <strong>chief Scrum Master</strong> for the train.<br> The RTE facilitates optimizing the flow of value by ensuring the ART events and artifacts function correctly, including the Program Kanban, Inspect &amp; Adapt (I&amp;A) workshop, ART Sync, and PI Planning.<br><strong>Business Owners</strong>:<br> Are a small group of stakeholders who have the business and technical responsibility for fitness for use, governance, and return on investment (ROI) for a Solution.<br> They are primary stakeholders in the ART and actively participate in ART events.  </p>
+<p> <img src="/img/SAFe/Scrum-SAFe.jpg" alt="avatar"></p>
+<h2 id="Team-Role"><a href="#Team-Role" class="headerlink" title="Team Role"></a>Team Role</h2><p><strong>Agile Teams</strong>:<br> Are cross-functional groups of 5-11 individuals who can define, build, test, and deliver an increment of value in a short time box.<br> Each ART is composed of 5 – 12 Agile teams and includes the roles and infrastructure necessary to deliver fully working and tested business solutions.<br><strong>Product Owner (PO)</strong>:<br> Is content authority for the team backlog<br> and responsible for defining stories and prioritizing the backlog.<br><strong>Scrum Master</strong>:<br> Is a servant leader and Agile team coach that helps the team to remove impediments,<br> facilitates team events,<br> and fosters an environment for high-performing teams.  </p>
+<h1 id="SAFe-事件"><a href="#SAFe-事件" class="headerlink" title="SAFe 事件:"></a>SAFe 事件:</h1><h2 id="ART事件"><a href="#ART事件" class="headerlink" title="ART事件:"></a>ART事件:</h2><p><strong>PI Planning</strong>:<br> Is a cadence-based, face-to-face planning event that serves as the heartbeat of the ART, aligning all the teams on the ART to the shared mission.<br> 用来计划和确定一列敏捷发布火车的时间维度，通过Sprint来保证编码实现和计划任务（Mission）持续一致。<br> 一般要开2天，在这个planning 谈论要做的东西:<br>  Program board: 主要包括 objectives, potential risks, and dependencies<br>                &nbsp; &nbsp; &nbsp; &nbsp; 要实现的新功能 排序<br>                &nbsp; &nbsp; &nbsp; &nbsp; 每个sprint的目标/风险/依赖/障碍 在board上体现<br>                &nbsp; &nbsp; &nbsp; &nbsp;  要经过BO/PM/其他scrum team review后，调整修改<br>  Program Risk，<br>  最后还有vote<br><strong>System Demo</strong>:<br> Provides an integrated view of new features from the most recent iteration delivered by all the teams in the ART.<br> Each demo provides ART stakeholders with an objective measure of progress during a PI.<br><strong>Inspect &amp; Adapt</strong>: 检查 调整<br> Is a significant event where the current state of the solution is demoed and evaluated.<br> Teams then reflect and identify improvement backlog items via a structured problem-solving workshop.<br><strong>Scrum of Scrums</strong>:<br> Helps coordinate the dependencies of the ARTs<br> and provides visibility into progress and impediments<br><strong>Product Owner (PO) Sync</strong>:<br> Provides visibility into how well the ART is progressing toward meeting the program PI objectives,<br> to discuss problems or opportunities with feature development, and to assess any scope adjustments.<br><strong>ART Sync</strong>:<br> Combines the ARTs <strong>Scrum of Scrums</strong> and PO Sync into a single meeting.  </p>
+<h2 id="Team事件"><a href="#Team事件" class="headerlink" title="Team事件:"></a>Team事件:</h2><p><strong>Iteration Planning</strong>:<br> Is an event in which an Agile team determines the Iteration Goals and how much of the team backlog they can commit to during an upcoming iteration.<br> Team capacity determines the number of stories and enablers that are selected.<br><strong>Iteration Execution</strong>:<br> Is how the Agile team develops an increment of a high-quality, working, tested system within the timebox.<br><strong>Iteration Review</strong>:<br> Is a cadence-based event at the end of each iteration in which the team reviews the previous increment’s results<br> and adjusts the team backlog based on feedback.<br><strong>Iteration Retrospective</strong>:<br> This is an event held at the end of the iteration for the Agile team to review its practices and identify ways to improve.<br> The retrospective is based on the qualitative and quantitative information presented during the iteration review.<br><strong>Backlog refinement</strong>:<br> Is an event held once or twice during the iteration to refine, review, and estimate future stories and enablers in the team backlog.  </p>
+<h1 id="SAFe-artifact"><a href="#SAFe-artifact" class="headerlink" title="SAFe artifact:"></a>SAFe artifact:</h1><h2 id="ART-artifact"><a href="#ART-artifact" class="headerlink" title="ART artifact:"></a>ART artifact:</h2><p><strong>Features</strong><br>  Features are services that fulfill stakeholder’s needs.<br>  Each includes a name, benefits hypothesis, and acceptance criteria.<br>  They are sized to fit within a PI.<br><strong>Enabler Features</strong><br>  Enabler features support the activities needed to extend the Architectural Runway to provide future business functionality<br>  and include exploration, architecture, infrastructure, and compliance.<br><strong>Program Epics</strong><br>  Program epics are epics that a single ART can delivery.<br><strong>Program PI Objectives</strong><br>  describe the specific business and technical goals which achieved in the upcoming PI.<br><strong>Program Backlog</strong>:<br>  upcoming Features, which are intended to address user needs and deliver business benefits for a single Agile Release Train (ART).<br>  It also contains the enabler features necessary to build the Architectural Runway.<br><strong>Program Kanban</strong><br>  Manages the flow of features and enablers through the Continuous Delivery Pipeline.<br><strong>Vision</strong><br>  This is a description of the future state of the solutions under development.<br>  It reflects the customer and stakeholder needs as well as the features proposed to meet them.<br>  将要开发的解决方案的未来视图，反映了客户和利益相关者的需要，以及为了满足这些需要所提出的特性(features)和能力(capabilities)<br><strong>Roadmap</strong><br>  This is a schedule of events and milestones that communicate planned deliverables for a solution over a planning horizon.<br><strong>Architectural Runway</strong><br>  Consists of the existing code, components, and technical infrastructure necessary to support the implementation of prioritized, near-term features, without excessive redesign and delay.<br><strong>Solution</strong><br>  Solution is the product, service, or system ARTs deliver to the customers, whether internal or external to the enterprise.<br><strong>Solution Context</strong><br>  Solution Context describes how the system will interface and be packaged and deployed in its operating environment.<br><strong>System Team</strong><br>  Is a specialized Agile Team that assists in building and supporting the Agile development environment,<br>  typically including the developing and maintaining the toolchain that supports the Continuous Delivery Pipeline.<br>  一个特殊的敏捷团队，为构建和使用敏捷开发环境提供帮助，包括持续集成和测试自动化，以及持续交付流水线的其他实践</p>
+<h2 id="Team-artifact"><a href="#Team-artifact" class="headerlink" title="Team artifact:"></a>Team artifact:</h2><p><strong>Stories</strong><br> Are the vehicle that carries customer requirements through the Value Stream into implementation.<br> The teams use stories to deliver value within an iteration,<br> and the Product Owner has content authority over their creation and acceptance.<br><strong>Enabler stories</strong><br>  Provide the exploration, infrastructure, architecture, or compliance groundwork needed by another story or feature.<br><strong>Team PI objectives</strong><br>  Are a summarized description of the specific business and technical goals that an Agile team intends to achieve in the upcoming PI.<br><strong>Iteration goals</strong><br>  an output of the iteration planning event and provide a high-level summary of the business and technical goals that the team agrees to accomplish in the upcoming iteration.<br>   They help ensure alignment with the PI Objectives.<br><strong>Team backlog</strong><br>  Consists of user and enabler stories; most stories are identified during PI planning and backlog refinement meetings</p>
+
       
 
       
@@ -308,16 +235,33 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/21/SAFe%20%E7%90%86%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/02/22/Gradle%E4%B8%8EMakefile%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AF%B9%E6%AF%94/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Gradle与Makefile构建工具的对比
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/21/Scrum%20Story/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">User Story</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -337,167 +281,50 @@
 
 
 
-
   
-    <article id="post-Scrum Story" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/21/Scrum%20Story/">User Story</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/21/Scrum%20Story/" class="archive-article-date">
-  	<time datetime="2020-02-21T12:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ScrumTeam在日常工作都是围绕story开展的，总结一下story相关内容<br>&nbsp; &nbsp; PO写story 要遵守<strong>DoR</strong>(Definition of Ready), INVEST原则， 包括<strong>AC</strong>(Acceptance criteria)验收标准<br>&nbsp; &nbsp; 在planning/Grooming meeting上要review/understand/estimate story,<br>&nbsp; &nbsp; Engineer要建sub-task来分解story定义每天的工作，在写sub-task的时候也是深入理解story的过程<br>&nbsp; &nbsp; Sprint结束的时候，story完成要遵守<strong>DoD</strong>(Definition of Done)， 把CodeReview 和confluence的summary 贴上<br>下面是copy的agreement</p>
-        
-          <a class="article-more-a" href="/2020/02/21/Scrum%20Story/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/21/Scrum%20Story/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Scrum 理论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/21/Scrum%20%E7%90%86%E8%AE%BA/">Scrum 理论</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/21/Scrum%20%E7%90%86%E8%AE%BA/" class="archive-article-date">
-  	<time datetime="2020-02-21T11:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>公司实施敏捷3年了，开始的时候也参加了Scrum的培训，拿到Scrum Alliance的认证。<br>同时美国的老板是SAFe专家, 管理经验也相当丰富。<br>整个team遵循SAFe,南京几个人的team是一个Scrum团队<br>先来写写对Scrum的理解吧  </p>
-<hr>
-<p>Scrum 是一个用于开发和维护复杂产品的<strong>过程框架</strong> ，是一个增量的、迭代的开发过程。<br>在这个框架中，整个开发过程由若干个迭代周期(sprint)组成，一般是2到4周。<br>在Scrum中，使用产品Backlog来管理产品的需求，产品backlog是一个按照商业价值排序的需求列表，体现形式为user story。Scrum团队总是先开发对客户具有较高价值的需求。<br>在Sprint中，Scrum团队从产品Backlog中挑选最高优先级的需求进行开发。挑选的需求在Sprint计划会议上经过讨论、分析和估算得到相应的任务列表，称为Sprint backlog。<br>在每个迭代结束时，Scrum团队将递交潜在可交付的产品增量。 </p>
-<p>Scrum 是<strong>轻量级的，易于理解的，难以精通的</strong>。<br><strong>Scrum框架是有Scrum团队以及相关的角色/事件/工件和规则组成</strong>。规则把事件/角色/工件组织在一起，管理它们间的关系和交互。</p>
-        
-          <a class="article-more-a" href="/2020/02/21/Scrum%20%E7%90%86%E8%AE%BA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/21/Scrum%20%E7%90%86%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="SAFe 理论" data-title="SAFe 基础理论" data-url="https://jeffryfeng.github.io/2020/02/21/SAFe%20%E7%90%86%E8%AE%BA/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </section>
+  
+
   
 
 
@@ -521,7 +348,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
