@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://jeffryfeng.github.io">
   <title>通过GUI前台定位分析后台问题 | Jeffry Feng Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间size&#x2F;timing 等参数都可以排序 如果step2花费时间比较长，进入performance选项，查看具体的花费时间 Element选项时定位用的，写selenium自动化测试的用的比">
+  <meta name="description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况， 定位是前端&#x2F;后端问题: 查看response消息是否正常，&amp;nbsp; &amp;nbsp; 1）如果是4** error，则是request的消息有问题，根据提示信息，在request消息里找到相关的值，需要前台的engineer修改&amp;nbsp; &amp;nbsp; 2）如果是5** error，则是后台的问">
 <meta property="og:type" content="article">
 <meta property="og:title" content="通过GUI前台定位分析后台问题">
 <meta property="og:url" content="https://jeffryfeng.github.io/2020/03/12/%E9%80%9A%E8%BF%87GUI%E5%89%8D%E5%8F%B0%E5%AE%9A%E4%BD%8D%E5%88%86%E6%9E%90%E5%90%8E%E5%8F%B0%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Jeffry Feng Blog">
-<meta property="og:description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间size&#x2F;timing 等参数都可以排序 如果step2花费时间比较长，进入performance选项，查看具体的花费时间 Element选项时定位用的，写selenium自动化测试的用的比">
+<meta property="og:description" content="前台GUI页面不正常时，按F12进入Network选项 然后F5 refresh页面，看消息情况， 定位是前端&#x2F;后端问题: 查看response消息是否正常，&amp;nbsp; &amp;nbsp; 1）如果是4** error，则是request的消息有问题，根据提示信息，在request消息里找到相关的值，需要前台的engineer修改&amp;nbsp; &amp;nbsp; 2）如果是5** error，则是后台的问">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-12T04:23:57.000Z">
-<meta property="article:modified_time" content="2020-04-04T09:34:05.358Z">
+<meta property="article:modified_time" content="2020-04-10T11:56:34.291Z">
 <meta property="article:author" content="Jeffry Feng">
 <meta property="article:tag" content="Test">
 <meta name="twitter:card" content="summary">
@@ -69,7 +69,7 @@
 			</ul>
 		</nav>
 		<nav>
-		   total 13
+		   total 14
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -198,11 +198,11 @@
       
         <ol>
 <li>前台GUI页面不正常时，按F12进入Network选项</li>
-<li>然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间<br>size/timing 等参数都可以排序</li>
-<li>如果step2花费时间比较长，进入performance选项，查看具体的花费时间</li>
-<li>Element选项时定位用的，写selenium自动化测试的用的比较多</li>
-<li>Memory选择可以看load页面消耗主机多少内存</li>
-<li>ssh到后台server，查看相关的log定位问题</li>
+<li>然后F5 refresh页面，看消息情况，</li>
+<li>定位是前端/后端问题: 查看response消息是否正常，<br>&nbsp; &nbsp; 1）如果是4** error，则是request的消息有问题，根据提示信息，在request消息里找到相关的值，需要前台的engineer修改<br>&nbsp; &nbsp; 2）如果是5** error，则是后台的问题， ssh到后台server，查看service相关的log    </li>
+<li>页面性能优化:<br>&nbsp; &nbsp; 没有error但由于message返回的size大小，timing比较长，导致load页面花费时间长, （size/timing 等参数都可以排序）<br>&nbsp; &nbsp; 先看是否有API的调用 是多余的，如果有，需要前台engineer修改<br>&nbsp; &nbsp; 然后查看调用的API 返回的data是否可以优化，有些内容不需要显示就可以不返回，这需要后台API调整<br>&nbsp; &nbsp; 进入performance选项，查看具体的花费时间，以及耗费的CPU和memory   </li>
+<li>Element选项时定位用的，写selenium自动化测试的用的比较多 </li>
+<li>Memory选择可以看load页面消耗主机多少内存 </li>
 </ol>
 
       
@@ -235,6 +235,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/04/10/SAFe%E4%B8%AD%E5%AF%B9CICD%E7%9A%84%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SAFe中CI/CD的理解
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/12/gradle%E7%BC%96%E8%AF%91%E7%9A%84package%E5%B8%A63rdsource/" id="article-nav-older" class="article-nav-link-wrap">

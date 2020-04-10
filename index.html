@@ -66,7 +66,7 @@
 			</ul>
 		</nav>
 		<nav>
-		   total 13
+		   total 14
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -175,6 +175,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-SAFe中对CICD的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/10/SAFe%E4%B8%AD%E5%AF%B9CICD%E7%9A%84%E7%90%86%E8%A7%A3/">SAFe中CI/CD的理解</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/10/SAFe%E4%B8%AD%E5%AF%B9CICD%E7%9A%84%E7%90%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2020-04-10T11:23:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1, DevOps:  <a href="https://www.scaledagileframework.com/devops/" target="_blank" rel="noopener">https://www.scaledagileframework.com/devops/</a><br> the continuous delivery pipeline and its four aspects of Continuous Exploration (CE),<br>Continuous Integration (CI), Continuous Deployment (CD), and Release on Demand directly support this business need.<br> 持续交付(continuous delivery) 包含4个部分 CE-持续探索/CI-持续集成/CD-持续部署/RoD-按需发布</p>
+<p>2, CI: <a href="https://www.scaledagileframework.com/continuous-integration/" target="_blank" rel="noopener">https://www.scaledagileframework.com/continuous-integration/</a><br>  CI 包括4部分： code-开发/build-编译/test-测试/staging environment-验证环境<br>   build部分其实包括两个部分:<br>    1)developer开发需要在本地setup的build script, 要考虑基础工具安装: gradle/java/docker/ojet<br>    2)gitlab或者jenkins上需要编译的script， 尽量invoke 1)中的script,  一般output是docker image，基础工具在base image里搞定</p>
+<p>3, CD: <a href="https://www.scaledagileframework.com/continuous-deployment/" target="_blank" rel="noopener">https://www.scaledagileframework.com/continuous-deployment/</a><br>   CD 包括4部分: 1)deploy to production 2)verify the solution 3)monitor the problems 4)response the recover<br>   感觉这一块 developer参与的少， 运维人员参与的多    </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Scrum</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/10/SAFe%E4%B8%AD%E5%AF%B9CICD%E7%9A%84%E7%90%86%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-通过GUI前台定位分析后台问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -197,11 +273,11 @@
       
         <ol>
 <li>前台GUI页面不正常时，按F12进入Network选项</li>
-<li>然后F5 refresh页面，看消息情况，具体消息的response是否正常，每个message返回的size大小，timing查看load页面花费时间<br>size/timing 等参数都可以排序</li>
-<li>如果step2花费时间比较长，进入performance选项，查看具体的花费时间</li>
-<li>Element选项时定位用的，写selenium自动化测试的用的比较多</li>
-<li>Memory选择可以看load页面消耗主机多少内存</li>
-<li>ssh到后台server，查看相关的log定位问题</li>
+<li>然后F5 refresh页面，看消息情况，</li>
+<li>定位是前端/后端问题: 查看response消息是否正常，<br>&nbsp; &nbsp; 1）如果是4** error，则是request的消息有问题，根据提示信息，在request消息里找到相关的值，需要前台的engineer修改<br>&nbsp; &nbsp; 2）如果是5** error，则是后台的问题， ssh到后台server，查看service相关的log    </li>
+<li>页面性能优化:<br>&nbsp; &nbsp; 没有error但由于message返回的size大小，timing比较长，导致load页面花费时间长, （size/timing 等参数都可以排序）<br>&nbsp; &nbsp; 先看是否有API的调用 是多余的，如果有，需要前台engineer修改<br>&nbsp; &nbsp; 然后查看调用的API 返回的data是否可以优化，有些内容不需要显示就可以不返回，这需要后台API调整<br>&nbsp; &nbsp; 进入performance选项，查看具体的花费时间，以及耗费的CPU和memory   </li>
+<li>Element选项时定位用的，写selenium自动化测试的用的比较多 </li>
+<li>Memory选择可以看load页面消耗主机多少内存 </li>
 </ol>
 
       
@@ -276,9 +352,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>公司第三方包审核团队 说根据LGPL license 规定要在产品release的jar或者rpm包里<br>不仅要有hibernate-core jar包，还要有hibernate-core的source jar包.<br>一般情况mvn仓库里每个版本都会有source包的 <a href="https://repo1.maven.org/maven2/org/hibernate/hibernate-core/5.3.13.Final/" target="_blank" rel="noopener">https://repo1.maven.org/maven2/org/hibernate/hibernate-core/5.3.13.Final/</a><br> 通过修改gradle配置文件build.gradle来引入source<br>本来是通过spring-boot引入hibernate-core的，默认并没有source.jar  </p>
+        <p>公司第三方包审核团队 说根据LGPL license 规定要在产品release的jar或者rpm包里<br>不仅要有hibernate-core jar包，还要有hibernate-core的source jar包.<br>默认情况下gradle在spring-boot引入hibernate-core的时候，有core的jar包，没有source的jar包<br> 其实mvn仓库里每个版本都会有source包的 <a href="https://repo1.maven.org/maven2/org/hibernate/hibernate-core/5.3.13.Final/" target="_blank" rel="noopener">https://repo1.maven.org/maven2/org/hibernate/hibernate-core/5.3.13.Final/</a><br> NOTE: 每个spring-boot的版本对应的hibernate-core版本不同  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &#39;org.springframework.boot:spring-boot-starter-data-jpa&#39;</span><br></pre></td></tr></table></figure>
-<p> 通过spring-boot的版本 查看对应的hibernate-core版本<br> 所以要再加一行code，把source.jar引入，<br><strong>后面一定要加source</strong>，这个是依赖声明的<strong>classifier配置</strong>， 否则不会引入source jar的</p>
+
+<p> 只要修改一行code，就可以把source.jar引入，<strong>后面一定要加source</strong>，这个是依赖声明的<strong>classifier配置</strong>， 否则不会引入source jar的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &quot;org.hibernate:hibernate-core:5.3.13.Final:sources&quot;</span><br></pre></td></tr></table></figure>
 <p>下面我们来看下 在声明外部模块的依赖项时支持两种表示法。<br><a href="https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html" target="_blank" rel="noopener">https://docs.gradle.org/current/dsl/org.gradle.api.artifacts.dsl.DependencyHandler.html</a><br>1）configurationName “group:name:version:<strong>classifier@extension</strong>“<br>2）configurationName group: group, name: name, version: version, <strong>classifier: classifier</strong>, ext: extension</p>
 
@@ -341,7 +418,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/wireMock/">WireMock</a>
+      <a class="article-title" href="/2020/03/06/wireMock/">WireMock PostMan</a>
     </h1>
   
 
@@ -692,87 +769,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/02/25/Makefile%E7%9A%84%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Gradle and Makefile结合实践" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/">Gradle and Makefile的项目实践</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/" class="archive-article-date">
-  	<time datetime="2020-02-23T02:38:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>由于老产品的一个模块性能不高，用Spring Boot和Spring MVC重构，Gradle默认编译的是Jar包<br>考虑到该模块要integrate到老产品 用rpm包安装部署，所以在build.gradle配置文件里加入gradle-ospackage-plugin插件，用来build RPM 包<br>还有老项目是用MAKE编译tar.gz包，所以要在老项目内修改MakeFile，调用新模块的gradle,然后把gradle build的rpm包 copy到tar.gz 包里<br>下面只是涉及design思路，code并不涉及公司内容  </p>
-<h1 id="build-gradle-引入gradle-ospackage-plugin插件，"><a href="#build-gradle-引入gradle-ospackage-plugin插件，" class="headerlink" title="build.gradle 引入gradle-ospackage-plugin插件，"></a>build.gradle 引入gradle-ospackage-plugin插件，</h1>
-        
-          <a class="article-more-a" href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gradle</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MakeFile</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/23/Gradle%20and%20Makefile%E7%BB%93%E5%90%88%E5%AE%9E%E8%B7%B5/">展开全文 >></a>
         </p>
       
 
